@@ -1,1 +1,5 @@
+# gitignore folder
 gitignore
+
+# local files
+.env
