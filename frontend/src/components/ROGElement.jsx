@@ -1,17 +1,19 @@
 // Random Object Generator Element
-import "../css/ROGElement.jsx"
+import { useState } from "react";
 
 function ROGElement({rogelement}) {
+    const [outElement, setOutElement] = useState();
+    const [outElements, setOutElements] = useState();
+
     let displayMultBtn = rogelement.displayMultBtn;
     let objectList = rogelement.objectList;
-    let algorithm = rogelement.algorithm
-    let outElement = null;
-    let outElements = [];
+    let algorithm = rogelement.algorithm;
+    let outElementsTemp = [];
 
     function roll(){
         switch(algorithm){
             default:
-                outElement = objectList[Math.floor(Math.random() * objectList.length) + 1];
+                setOutElement(objectList[Math.floor(Math.random() * objectList.length)]);
                 break;
         }
     }
@@ -20,25 +22,26 @@ function ROGElement({rogelement}) {
         while (i < 10){
             switch(algorithm){
                 default:
-                    outElements.append(objectList[Math.floor(Math.random() * objectList.length) + 1]);
+                    outElementsTemp.push(objectList[Math.floor(Math.random() * objectList.length)])
                     break;
-            }
+                }
+            setOutElements(outElementsTemp);
+            i++;
         }
     }
 
     if (displayMultBtn){
         return(
-        <div classname="rogelement-container">
-            <p classname="outElement">{outElement}</p>
-            <button classname="genBtn" onclick={roll}>Generate</button>
-            <button classname="genMultBtn" onclick={roll}>Generate Multiple</button>
+        <div className="rogelement-container">
+            <p className="outElement">{outElements}</p>
+            <button className="genMultBtn" onClick={rollMultiple}>Generate Multiple</button>
         </div>
     )
     }
     return(
-        <div classname="rogelement-container">
-            <p classname="outElement">{outElement}</p>
-            <button classname="genBtn" onclick={rollMultiple}>Generate</button>
+        <div className="rogelement-container">
+            <p className="outElement">{outElement}</p>
+            <button className="genBtn" onClick={roll}>Generate</button>
         </div>
     )
 }
