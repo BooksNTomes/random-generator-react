@@ -1,6 +1,8 @@
 # random-generator-react
-- A simple react application where users can create their own random 'object' generators, whether it be numbers, words, or other "objects" that said users can specify.
+- A simple react application that serves as a showcase website of simple random number generators. Developers can make use of this as inspiration to create their own random 'object' generators as react pages/components, whether it be a random generator for numbers, words, or other "objects".
 
-# current status: prototyping and setup phase
-- In this phase I intend to setup the project base (react) and list down features to implement and work on, to add more dependencies to the project.
-- Most of the planning documents are part of gitignore.
+# current status: designing / planning
+- initialization
+- frontend designing
+- (currently here) designing the random number generator (object) components
+- backend structure design
