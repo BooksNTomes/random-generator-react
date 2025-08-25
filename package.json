@@ -1,0 +1,26 @@
+{
+  "name": "random-generator-react",
+  "version": "1.0.0",
+  "description": "- A simple react application that serves as a showcase website of simple random number generators. Developers can make use of this as inspiration to create their own random 'object' generators as react pages/components, whether it be a random generator for numbers, words, or other \"objects\".",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BooksNTomes/random-generator-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BooksNTomes/random-generator-react/issues"
+  },
+  "homepage": "https://github.com/BooksNTomes/random-generator-react#readme",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0",
+    "nodemon": "^3.1.10"
+  }
+}

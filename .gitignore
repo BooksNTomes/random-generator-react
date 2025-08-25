@@ -2,4 +2,5 @@
 gitignore
 
 # local files
+node_modules
 .env
