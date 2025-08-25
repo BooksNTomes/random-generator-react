@@ -1,7 +1,7 @@
 // Random Object Generator Element
 import { useState } from "react";
 
-function ROGElement({rogelement}) {
+function Rogelement({rogelement}) {
     /*
         Random Object Generator Element
         A container div that contains:
@@ -65,4 +65,4 @@ function ROGElement({rogelement}) {
     )
 }
 
-export default ROGElement
+export default Rogelement
