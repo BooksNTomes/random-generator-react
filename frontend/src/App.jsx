@@ -2,12 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Rogelement from './components/Roelement'
-// import Rogelement from './components/Rogelement'
+import Rogelement from './components/Rogelement'
 
 function App() {
   const [count, setCount] = useState(0)
-  // eslint-disable-next-line no-unused-vars
   const rogelement = {
     displayMultBtn: false,
     objectList : [1,2,3,4,5,6]
