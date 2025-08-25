@@ -51,17 +51,21 @@ function Rogelement({rogelement}) {
     // Return DOM
     if (displayMultBtn){
         return(
+        // <Header>
         <div className="rogelement-container">
             <p className="outElement">{outElements}</p>
             <button className="genMultBtn" onClick={rollMultiple}>Generate Multiple</button>
         </div>
+        // <Footer>
     )
     }
     return(
+        // <Header>
         <div className="rogelement-container">
             <p className="outElement">{outElement}</p>
             <button className="genBtn" onClick={roll}>Generate</button>
         </div>
+        // <Footer>
     )
 }
 
