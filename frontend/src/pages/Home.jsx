@@ -1,10 +1,11 @@
+import FeatureCards from "../components/FeatureCards";
+import Hero from "../components/Hero";
+
 function Home() {
     return (
         <>
-            <Header></Header>
             <Hero></Hero>
             <FeatureCards></FeatureCards>
-            <Footer></Footer>
         </>
     )
 }
