@@ -1,9 +1,10 @@
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+
 function About() {
     return (
         <>
-            <Header></Header>
-            <AboutSection></AboutSection>
-            <Footer></Footer>
+
         </>
     )
 }

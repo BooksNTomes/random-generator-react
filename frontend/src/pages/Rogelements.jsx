@@ -7,9 +7,7 @@ function Rogelements({rogelements}){
 
     return (
         <>
-            <Header></Header>
             <ul>{listRogelements}</ul>
-            <Footer></Footer>
         </>
         )
 }
