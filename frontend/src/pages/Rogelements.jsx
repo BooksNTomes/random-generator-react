@@ -1,15 +1,11 @@
-import RogelementCard from "../components/RogelementCard";
+import '../css/index.css'
 
-function Rogelements({rogelements}){
-    const listRogelements = rogelements.map(rogelement => 
-        <li><RogelementCard>{rogelement}</RogelementCard></li>
-    )
-
-    return (
+function Rogelements(){
+    return(
         <>
-            <ul>{listRogelements}</ul>
+
         </>
-        )
+    )
 }
 
 export default Rogelements;

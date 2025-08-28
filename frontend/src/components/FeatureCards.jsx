@@ -6,7 +6,7 @@ import third from '../assets/third.svg';
 
 function FeatureCards(){
     return (
-    <div className="pl-8 pr-8 flex gap-4 items-center justify-evenly">
+    <div className="flex gap-4 items-center justify-evenly browser-size m-auto">
         <Card 
         image={first}
         name={"Lists of Objects"} 
