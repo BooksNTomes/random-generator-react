@@ -1,7 +1,7 @@
 import '../css/index.css'
 import Card from './Card';
 
-function RogelementCard ({link, image, name, description}){
+function GeneratorCard ({link, image, name, description}){
     return (
     <a href={link}>
         <Card 
@@ -13,4 +13,4 @@ function RogelementCard ({link, image, name, description}){
     )
 }
 
-export default RogelementCard;
+export default GeneratorCard;

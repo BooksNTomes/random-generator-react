@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const rogelementSchema = new mongoose.Schema({
+const generatorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -26,6 +26,6 @@ const rogelementSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const Rogelement = mongoose.model("Rogelement", rogelementSchema);
+const Generator = mongoose.model("Generator", generatorSchema);
 
-export default Rogelement;
+export default Generator;

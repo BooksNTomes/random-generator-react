@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../css/index.css';
 
 function Header() {
@@ -7,12 +8,10 @@ function Header() {
             <header className="">
             <a href="/"><h1>Random Generators</h1></a>
             </header>
-            <nav className="">
-            <ul className="flex gap-4">
-                <li><a href="/">Home</a></li>
-                <li><a href="">Generators</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
+            <nav className="flex gap-4">
+                <Link to="/">Home</Link>
+                <Link to="/generators">Generators</Link>
+                <Link to="/about">About</Link>
             </nav>
         </div>
     </div>

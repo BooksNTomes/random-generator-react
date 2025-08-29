@@ -1,6 +1,6 @@
 import '../css/index.css'
 
-function Rogelement() {
+function Generator() {
     return(
         <div>
             <div>
@@ -25,4 +25,4 @@ function Rogelement() {
     )
 }
 
-export default Rogelement
+export default Generator
