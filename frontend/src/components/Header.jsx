@@ -6,7 +6,7 @@ function Header() {
     <div className="bg-white shadow border-1 border-black/15">
         <div className="flex m-auto justify-between items-center browser-size">
             <header className="">
-            <a href="/"><h1>Random Generators</h1></a>
+            <Link to="/"><h1>Random Generators</h1></Link>
             </header>
             <nav className="flex gap-4">
                 <Link to="/">Home</Link>
