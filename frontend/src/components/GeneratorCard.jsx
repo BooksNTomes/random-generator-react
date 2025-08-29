@@ -1,15 +1,16 @@
+import { Link } from 'react-router-dom';
 import '../css/index.css'
 import Card from './Card';
 
 function GeneratorCard ({link, image, name, description}){
     return (
-    <a href={link}>
+    <Link to={link}>
         <Card 
             image={image}
             name={name}
             description={description}>
         </Card>
-    </a>
+    </Link>
     )
 }
 

@@ -24,6 +24,10 @@ h2 {
     font-weight:500;
 }
 
+h3 {
+    font-size: 24px;
+}
+
 .box-shadow{
     background-color: #0000000d;
     box-shadow: 4px 4px 4px #00000040;
