@@ -1,19 +1,21 @@
-/* eslint-disable no-unused-vars */
-
 import {useState} from 'react';
 
 export default function GeneratorStrings({generator}){
 
-    let [algorithmState, setAlgorithmState] = useState("default");
-    let [listState, setListState] = useState(generator.list);
-    let [amtState, setAmtState] = useState(1);
-    let [genState, setGenState] = useState(0);
+    const [algorithmState, setAlgorithmState] = useState("default");
+    const [listState, setListState] = useState(generator.list);
+    const [amtState, setAmtState] = useState(1);
+    const [genState, setGenState] = useState(0);
 
-    const listhandler = (event) => {
+    
+    const listHandler = (event) => {
         setListState(
             generator.list.filter((entry) => entry !== event.value)
         )
     }
+    const listDOM = listState.map((entry) => {
+        <input type="checkbox" onChange={listHandler} value={entry}></input>
+    })
     const amtHandler = (event) => {
         let amount = event.value;
         setAmtState(amount);
@@ -56,6 +58,11 @@ export default function GeneratorStrings({generator}){
                             this generator does not allow direct modification
                         </span>
                     </h4>
+
+
+                    <div>
+                        {listDOM}
+                    </div>
 
 
                     <div className="ml-5">

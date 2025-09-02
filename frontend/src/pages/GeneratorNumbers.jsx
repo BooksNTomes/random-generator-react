@@ -2,11 +2,11 @@ import {useState} from 'react';
 
 export default function GeneratorNumbers({generator}) {
 
-    let [minState, setMinState] = useState(1);
-    let [maxState, setMaxState] = useState(100);
-    let [genState, setGenState] = useState(0);
-    let [amtState, setAmtState] = useState(1);
-    let [algorithmState, setAlgorithmState] = useState("default");
+    const [minState, setMinState] = useState(1);
+    const [maxState, setMaxState] = useState(100);
+    const [genState, setGenState] = useState(0);
+    const [amtState, setAmtState] = useState(1);
+    const [algorithmState, setAlgorithmState] = useState("default");
     
     const minHandler = (event) => {
         let value = event.value;
