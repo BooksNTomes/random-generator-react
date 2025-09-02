@@ -13,12 +13,16 @@ const generatorSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    //
+    // Just add validations for these
     listType:{
         type: String,
         required: true,
     },
     list:{
+        type: [String],
+        required: false
+    },
+    verification:{
         type: [String],
         required: false
     }
