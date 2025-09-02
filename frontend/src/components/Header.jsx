@@ -3,7 +3,7 @@ import '../css/index.css';
 
 function Header() {
     return (
-    <div className="bg-white shadow border-1 border-black/15">
+    <div className="bg-white shadow border-1 border-black/15 border-t-0">
         <div className="flex m-auto justify-between items-center browser-size">
             <header className="">
             <Link to="/"><h1>Random Generators</h1></Link>

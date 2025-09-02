@@ -20,12 +20,28 @@ h1 {
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight:500;
 }
 
 h3 {
     font-size: 24px;
+}
+
+.ptag-xxl {
+    font-size:24px;
+}
+.ptag-xl {
+    font-size:20px;
+}
+.ptag-lg {
+    font-size: 16px;
+}
+.ptag-md {
+    font-size: 14px;
+}
+.ptag-sm {
+    font-size: 12px;
 }
 
 .box-shadow{

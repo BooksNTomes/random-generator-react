@@ -12,7 +12,37 @@ export default function GeneratorManager({generator}){
 
     return(
         <div>
-
+            <div>
+                <div>
+                    <h4>Name</h4>
+                    <input type="text"></input>
+                    <h4>Description</h4>
+                    <input type="text"></input>
+                </div>
+                <div>
+                    <h4>Image</h4>
+                    <input type="image"></input>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h4>Type</h4>
+                    <select></select>
+                </div>
+                <div>
+                    <h4>List</h4>
+                    <input type="text"></input>
+                </div>
+                <div>
+                    <h4>Validation</h4>
+                    <select></select>
+                </div>
+            </div>
+            <div>
+                <button>Cancel</button>
+                <button>Preview</button>
+                <button>Save</button>
+            </div>
         </div>
     )
 }
