@@ -3,12 +3,15 @@ import '../css/index.css'
 
 function Generator({generator}) {
     return(
-        <div className='pb-20'>
+        <div className='pb-20 full-bottom browser-size m-auto'>
             <NavCrumbs navtarget={''}></NavCrumbs>
-            <div className="browser-size m-auto">
+            <div>
                 <h2>{generator.name}</h2>
                 <p>{generator.description}</p>
             </div>
+            
+            <></>
+
         </div>
     )
 }

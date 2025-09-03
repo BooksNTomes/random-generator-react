@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Font Settings */
 @font-face{
     font-family: montserrat;
     src: url("../assets/fonts/Montserrat-VariableFont_wght.ttf");
@@ -8,31 +9,37 @@
     font-family: montserrat-alternates;
     src: url("../assets/fonts/MontserratAlternates-Regular.ttf");
 }
-
 *{
     font-family: montserrat;
     font-size: 16px;
 }
 
+/* body elements size restriction */
+/* I should probably configure this for mobile design */
+.browser-size{
+    width: 1100px;
+}
+.full-bottom{
+    padding-bottom:10%;
+}
+
+/* Text Styling */
 h1 {
     font-size: 36px;
     font-weight: 500;
 }
-
 h2 {
     font-size: 32px;
     font-weight:500;
 }
-
 h3 {
     font-size: 24px;
 }
-
 .ptag-xxl {
-    font-size:24px;
+    font-size:20px;
 }
 .ptag-xl {
-    font-size:20px;
+    font-size:18px;
 }
 .ptag-lg {
     font-size: 16px;
@@ -44,18 +51,20 @@ h3 {
     font-size: 12px;
 }
 
-.box-shadow{
+/* Box Styling */
+.box-shadow-gray{
     background-color: #0000000d;
     box-shadow: 4px 4px 4px #00000040;
 }
+.box-shadow-default{
+    box-shadow: 4px 4px 4px #00000040;
+}
+
+/* Font Weight */
 .embolden {
     font-weight:500;
 }
 
 li {
     list-style-type: none;
-}
-
-.browser-size{
-    width: 1100px;
 }

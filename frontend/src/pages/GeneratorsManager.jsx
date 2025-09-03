@@ -5,7 +5,7 @@ import '../css/index.css'
 import first from '../assets/first.svg';
 import second from '../assets/second.svg';
 
-function Generators(){
+export default function GeneratorsManager(){
     return(
         <div className='browser-size m-auto full-bottom'>
             <NavCrumbs navtarget={''}></NavCrumbs>
@@ -22,9 +22,14 @@ function Generators(){
                 image={second}
                 name={"Names"} 
                 description={"Random number generators are powered by mathematical algorithms, mostly not truly random."}/>
+
+                <GeneratorCard
+                link={'/add'}
+                image={''}
+                name={"Add Generator"}
+                description={""}>
+                </GeneratorCard>
             </div>
         </div>
     )
 }
-
-export default Generators;

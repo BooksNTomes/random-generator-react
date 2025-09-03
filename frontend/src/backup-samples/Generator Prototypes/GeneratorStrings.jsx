@@ -1,27 +1,21 @@
 import {useState} from 'react';
 
-export default function GeneratorNumbers({generator}) {
+export default function GeneratorStrings({generator}){
 
-    const [minState, setMinState] = useState(1);
-    const [maxState, setMaxState] = useState(100);
-    const [genState, setGenState] = useState(0);
-    const [amtState, setAmtState] = useState(1);
     const [algorithmState, setAlgorithmState] = useState("default");
+    const [listState, setListState] = useState(generator.list);
+    const [amtState, setAmtState] = useState(1);
+    const [genState, setGenState] = useState(0);
+
     
-    const minHandler = (event) => {
-        let value = event.value;
-        if (generator.validation !== "float"){
-            value = Math.floor(value);
-        }
-        setMinState(value);
+    const listHandler = (event) => {
+        setListState(
+            generator.list.filter((entry) => entry !== event.value)
+        )
     }
-    const maxHandler = (event) => {
-        let value = event.value;
-        if (generator.validation !== "float"){
-            value = Math.floor(value);
-        }
-        setMaxState(value);
-    }
+    const listDOM = listState.map((entry) => {
+        <input type="checkbox" onChange={listHandler} value={entry}></input>
+    })
     const amtHandler = (event) => {
         let amount = event.value;
         setAmtState(amount);
@@ -33,13 +27,13 @@ export default function GeneratorNumbers({generator}) {
     function genHandler(){
         for (let i = 0; i < amtState; i++){
             if (algorithmState === "default"){
-                setGenState(Math.random() * (maxState - minState + 1) + minState)
+                setGenState(Math.random() * (generator.list.length - 0 + 1) + 0);
             }
         }
     }
 
     return (
-        <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md">
+        <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md  full-bottom">
             <div className="w-1/2">
                 <h2>Config</h2>
                 <div className="p-5 border-1 border-black/5 rounded-[5px] shadow-sm">
@@ -66,14 +60,14 @@ export default function GeneratorNumbers({generator}) {
                     </h4>
 
 
-                    <div className="ml-5">
-                        <h4 className="mb-5">Min: <span>
-                            <input type="number" onChange={minHandler}>{minState}</input>
-                            
-                        </span></h4>
-                        <h4 className="mb-5">Max: <span>
-                            <input type="number" onChange={maxHandler}>{maxState}</input>
+                    <div>
+                        {listDOM}
+                    </div>
 
+
+                    <div className="ml-5">
+                        <h4 classname="mb-5">List: <span>
+                            <button>Open List</button>
                         </span></h4>
                         <h4 className="mb-5">Amount: <span>
                             <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2">

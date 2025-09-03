@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import {useState} from 'react';
 
-export default function GeneratorManager({generator}){
+export default function GeneratorEditor({generator}){
     
     const [genName, setGenName] = useState(generator.name);
     const [genDesc, setGenDesc] = useState(generator.description);
@@ -11,7 +11,7 @@ export default function GeneratorManager({generator}){
     const [genValidation, setGenValidation] = useState(generator.validation);
 
     return(
-        <div>
+        <div className='browser-size m-auto full-bottom'>
             <div>
                 <div>
                     <h4>Name</h4>
