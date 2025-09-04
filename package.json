@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "- A simple react application that serves as a showcase website of simple random number generators. Developers can make use of this as inspiration to create their own random 'object' generators as react pages/components, whether it be a random generator for numbers, words, or other \"objects\".",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon backend/server.js",
+    "dev": "nodemon backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

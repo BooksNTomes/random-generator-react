@@ -14,7 +14,7 @@ const generatorSchema = new mongoose.Schema({
         required: true
     },
     // Just add validations for these
-    listType:{
+    type:{
         type: String,
         required: true,
     },
@@ -22,9 +22,13 @@ const generatorSchema = new mongoose.Schema({
         type: [String],
         required: false
     },
-    verification:{
-        type: [String],
+    validation:{
+        type: String,
         required: false
+    },
+    published:{
+        type: Boolean,
+        required: true
     }
 }, {
     timestamps: true
