@@ -33,9 +33,8 @@ export const getGenerator = async (req, res) => {
 }
 
 export const createGenerator = async (req, res) => {
-    console.log(req);
+    console.log(req.body);
     const generator =  req.body;
-    // console.log(req.body);
 
     // if (!validGenerator(generator)){
     //     return res.status(400).json({success: false, message: "Please provide all required details"});
