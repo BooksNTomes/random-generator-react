@@ -1,13 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { createGenerator, deleteGenerator, getGenerators, updateGenerator } from '../controllers/generator.controller';
+import { createGenerator, deleteGenerator, getGenerators, getGenerator, updateGenerator } from '../controllers/generator.controller';
 
 const router = express.Router();
-
-router.get("/", getGenerators);
-
-router.post("/", createGenerator);
-
-router.put("/:id", updateGenerator);
-
-router.delete("/:id", deleteGenerator);
+// USER VIEW
+router.get("/generators", getGenerators);
+router.get("/generators/:id", getGenerator);
+// ADMIN VIEW ("MANAGER")
+router.get("/generators-manager/:id", getGenerators);
+router.post("/generators-manager/create", createGenerator);
+router.put("/generators-manager/:id", updateGenerator);
+router.delete("/generators-manager/:id", deleteGenerator);

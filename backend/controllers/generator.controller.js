@@ -12,6 +12,26 @@ export const getGenerators = async (req, res) => {
     }
 }
 
+export const getGenerator = async (req, res) => {
+    const {id} = req.params;
+
+    const generator = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({success: false, message: "Invalid Generator ID"});
+    }
+
+    try {
+        const generator = await Generator.findById(id);
+        res.status(200).json({success: true, data: generator});
+    }
+    catch (error) {
+        console.log("Error in get Generator: ", error.message);
+        res.status(500).json({success: false, message: "Server Error"})
+    }
+
+}
+
 export const createGenerator = async (req, res) => {
 
     const generator =  req.body;
