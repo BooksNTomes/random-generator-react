@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import generatorRoutes from './routes/generator.routes.js';
 
-import createGeneratorTest from './debug/generator.debug.js';
+// import getGeneratorTest from './debug/generator.debug.js';
 
 // testing/debugging variables and imports
 const DEBUG = 1;
@@ -23,5 +23,6 @@ app.listen(PORT, () => {
 
 if (DEBUG) {
     // RUN TESTS
-    createGeneratorTest();
+    // createGeneratorTest();
+    // getGeneratorTest();
 }
