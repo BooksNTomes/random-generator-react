@@ -4,3 +4,4 @@ gitignore
 # local files
 node_modules
 .env
+random-generator-react.code-workspace

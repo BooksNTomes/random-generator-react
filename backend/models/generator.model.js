@@ -20,7 +20,8 @@ const generatorSchema = new mongoose.Schema({
     },
     list:{
         type: [String],
-        required: false
+        required: false,
+        default: []
     },
     validation:{
         type: String,

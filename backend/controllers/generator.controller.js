@@ -17,9 +17,9 @@ export const getGenerator = async (req, res) => {
 
     const generator = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({success: false, message: "Invalid Generator ID"});
-    }
+    // if (!mongoose.Types.ObjectId.isValid(id)){
+    //     return res.status(404).json({success: false, message: "Invalid Generator ID"});
+    // }
 
     try {
         const generator = await Generator.findById(id);
@@ -36,9 +36,9 @@ export const createGenerator = async (req, res) => {
     console.log(req.body);
     const generator =  req.body;
 
-    // if (!validGenerator(generator)){
-    //     return res.status(400).json({success: false, message: "Please provide all required details"});
-    // }
+    if (!validGenerator(generator)){
+        return res.status(404).json({success: false, message: "Error in validating generator's Type with List and Validation"});
+    }
 
     const newGenerator = new Generator(generator);
 
