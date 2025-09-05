@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import generatorRoutes from './routes/generator.routes.js';
 
-// import getGeneratorTest from './debug/generator.debug.js';
+import updateGeneratorTest from './debug/generator.debug.js';
 
 // testing/debugging variables and imports
 const DEBUG = 1;
@@ -25,4 +25,5 @@ if (DEBUG) {
     // RUN TESTS
     // createGeneratorTest();
     // getGeneratorTest();
+    // updateGeneratorTest();
 }

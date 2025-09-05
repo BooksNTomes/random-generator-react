@@ -1,5 +1,6 @@
 import Generator from "../models/generator.model.js";
 import { validGenerator } from "../services/generator.services.js";
+import mongoose from "mongoose";
 
 export const getGenerators = async (req, res) => {
     try{
@@ -60,8 +61,10 @@ export const updateGenerator = async (req, res) => {
         return res.status(404).json({success: false, message: "Invalid Generator ID"});
     }
 
+    // TODO: add validator again
+
     try {
-        const updatedGenerator = await Product.findByIdAndUpdate(id, generator, {new:true});
+        const updatedGenerator = await Generator.findByIdAndUpdate(id, generator, {new:true});
         res.status(200).json({success: true, data: updatedGenerator});
     }
     catch (error) {
