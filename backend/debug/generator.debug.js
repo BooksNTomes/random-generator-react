@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 
+// Uncomment needed test function
+
 dotenv.config();
 const PORT = process.env.PORT;
 const defaultHeader = {
@@ -103,3 +105,13 @@ const defaultHeader = {
 //     console.log(response);
 // };
 
+// export default 
+// async function deleteGeneratorTest(){
+//     const sampleID = '68ba902aff93bb1e5322410e';
+
+//     const response = await fetch(`http://localhost:${PORT}/generators-manager/${sampleID}`, {
+//         method: "DELETE",
+//         headers: defaultHeader
+//     });
+//     console.log(response);
+// };

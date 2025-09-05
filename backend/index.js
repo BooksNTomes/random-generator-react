@@ -3,10 +3,10 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import generatorRoutes from './routes/generator.routes.js';
 
-import updateGeneratorTest from './debug/generator.debug.js';
+// import deleteGeneratorTest from './debug/generator.debug.js';
 
 // testing/debugging variables and imports
-const DEBUG = 1;
+const DEBUG = 0;
 dotenv.config();
 
 const app = express();
@@ -23,7 +23,8 @@ app.listen(PORT, () => {
 
 if (DEBUG) {
     // RUN TESTS
-    // createGeneratorTest();
-    // getGeneratorTest();
-    // updateGeneratorTest();
+    // createGeneratorTest();   // Working
+    // getGeneratorTest();      // Working
+    // updateGeneratorTest();   // Working
+    // deleteGeneratorTest();   // Working
 }
