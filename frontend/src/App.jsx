@@ -5,6 +5,7 @@ import {Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Generators from './pages/Generators';
+import GeneratorsManager from './pages/GeneratorsManager';
 
 function App() {
   
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/generators" element={<Generators/>}/>
-        <Route path="/generator" element={<Generator/>}/>
+        <Route path="/generators-manager" element={<GeneratorsManager/>}/>
+        {/* <Route path="/generator" element={<Generator/>}/> */}
       </Routes>
       <Footer></Footer>
     </>
