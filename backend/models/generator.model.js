@@ -13,7 +13,6 @@ const generatorSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Just add validations for these
     type:{
         type: String,
         required: true,

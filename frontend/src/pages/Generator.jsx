@@ -9,6 +9,8 @@ function Generator() {
     const {id} = useParams();
 
     const [generator, setGenerator] = useState({});
+    const [generatorType, setGeneratorType] = useState("NUMBER");
+
     const [minState, setMinState] = useState(1);
     const [maxState, setMaxState] = useState(100);
     const [genState, setGenState] = useState(0);

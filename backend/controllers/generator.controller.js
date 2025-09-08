@@ -18,9 +18,9 @@ export const getGenerator = async (req, res) => {
 
     const generator = req.body;
 
-    // if (!mongoose.Types.ObjectId.isValid(id)){
-    //     return res.status(404).json({success: false, message: "Invalid Generator ID"});
-    // }
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({success: false, message: "Invalid Generator ID"});
+    }
 
     try {
         const generator = await Generator.findById(id);

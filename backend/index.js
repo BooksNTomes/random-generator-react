@@ -3,28 +3,21 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import generatorRoutes from './routes/generator.routes.js';
 
-// import deleteGeneratorTest from './debug/generator.debug.js';
-
-// testing/debugging variables and imports
-const DEBUG = 0;
 dotenv.config();
 
-const app = express();
+const DEBUG = 0;
 const PORT = process.env.PORT;
+
+const app = express();
 
 app.use(express.json());
 app.use("/", generatorRoutes);
-app.listen(PORT, () => {
-    // Connect to Database
-    connectDB();
 
+app.listen(PORT, () => {
+    connectDB();
     console.log("Server started at http://localhost:" + PORT);
 });
 
 if (DEBUG) {
     // RUN TESTS
-    // createGeneratorTest();   // Working
-    // getGeneratorTest();      // Working
-    // updateGeneratorTest();   // Working
-    // deleteGeneratorTest();   // Working
 }

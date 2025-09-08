@@ -35,6 +35,7 @@ function GeneratorsManager(){
         fetchGenerators();
     }, []);
 
+    // TODO : ADD Create Card and Add Delete Button
     return(
         <div className='browser-size m-auto full-bottom'>
             <NavCrumbs navtarget={''}></NavCrumbs>
@@ -47,12 +48,13 @@ function GeneratorsManager(){
                         description={''}/>
                 ))) : generators.map(generator => (
                     <GeneratorCard
-                        link={`/generators/${generator._id}`}
+                        link={`/generators-manager/${generator._id}`}
                         image={generator.img}
                         name={generator.name}
                         description={generator.description}/>
                         
                 ))}
+                
             </div>
         </div>
     )

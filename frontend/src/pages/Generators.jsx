@@ -39,6 +39,7 @@ function Generators(){
         <div className='browser-size m-auto full-bottom'>
             <NavCrumbs navtarget={''}></NavCrumbs>
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
+                
                 { loadingGenerators ? (Array.from(3).map((a, index) => (
                     <GeneratorCard
                         link={''}
@@ -50,9 +51,9 @@ function Generators(){
                         link={`/generators/${generator._id}`}
                         image={generator.img}
                         name={generator.name}
-                        description={generator.description}/>
-                        
+                        description={generator.description}/>     
                 ))}
+                
             </div>
         </div>
     )
