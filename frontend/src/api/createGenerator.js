@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+const PORT = import.meta.env.VITE_API_PORT;
 
 // export default 
 const createGenerator = async (generatorParameters) => {

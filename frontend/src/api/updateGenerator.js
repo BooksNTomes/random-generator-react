@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+const PORT = import.meta.env.VITE_API_PORT;
 
 const updateGeneratorTest = async (generatorID, generatorParameters) => {
     const response = await fetch(`/${generatorID}`, {

@@ -1,15 +1,41 @@
 import NavCrumbs from '../components/NavCrumbs'
 import '../css/index.css'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
-function Generator({generator}) {
+import { retrieveGenerator } from '../api/retrieveGenerator';
+import { useParams } from 'react-router-dom';
 
+function Generator() {
+    const {id} = useParams();
+
+    const [generator, setGenerator] = useState({});
     const [minState, setMinState] = useState(1);
     const [maxState, setMaxState] = useState(100);
     const [genState, setGenState] = useState(0);
     const [amtState, setAmtState] = useState(1);
     const [algorithmState, setAlgorithmState] = useState("default");
     
+    useEffect(() => {
+        const fetchGenerator = async () => {
+            try {
+                const response = await retrieveGenerator(id);
+
+                if (response.ok){
+                    const data = await response.json();
+                    const generator = data.data;
+                    if (generator !== null && generator !== undefined){
+                        setGenerator(generator);
+                    } else {
+                        setGenerator({});
+                    }
+                }
+            } catch (err) {
+                console.log("Error in fetching generator");
+            }
+        }
+        fetchGenerator()
+    }, [])
+
     const minHandler = (event) => {
         let value = event.value;
         if (generator.validation !== "float"){
