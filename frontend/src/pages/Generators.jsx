@@ -12,6 +12,7 @@ function Generators(){
     const [generators, setGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);
 
+    // Call Retrieve Generators from API
     useEffect(() => {
         const fetchGenerators = async () => {
             try {

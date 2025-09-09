@@ -1,19 +1,20 @@
 import dotenv from 'dotenv';
 
-// Uncomment needed test function
-
 dotenv.config();
-const PORT = process.env.PORT;
-const defaultHeader = {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        }
+const URL = `${process.env.BACKEND_URL? process.env.BACKEND_URL : process.env.LOCAL_BACKEND_URL}${process.env.PORT}`
+
+export const runTests = async (testNo) => {
+    if (testNo == 0){
+        return;
+    }
+    else {
+        return;
+    }
+}
 
 export const createGeneratorTest =  async () => {
-    // CREATE
-
     // Validity Test : NUMBER => SUCCESS
-    const response = await fetch(`http://localhost:${PORT}/generators-manager/create/`, 
+    const response = await fetch(`${URL}/generators-manager/create/`, 
         {
             method: "POST",
             headers: {
@@ -37,7 +38,7 @@ export const createGeneratorTestString =  async () => {
     // CREATE
 
     // Validity Test : STRING => SUCCESS
-    const response = await fetch(`http://localhost:${PORT}/generators-manager/create/`, 
+    const response = await fetch(`${URL}/generators-manager/create/`, 
         {
             method: "POST",
             headers: {
@@ -60,7 +61,7 @@ export const createGeneratorTestString =  async () => {
 };
 
 export const getGeneratorManagerTest = async () => {
-    const response = await fetch(`http://localhost:${PORT}/generators-manager/`, 
+    const response = await fetch(`${URL}/generators-manager/`, 
         {
             method: "GET",
             headers: {
@@ -74,7 +75,21 @@ export const getGeneratorManagerTest = async () => {
 };
 
 export const getGeneratorsTest = async () => {
-    const response = await fetch(`http://localhost:${PORT}/generators/`, 
+    const response = await fetch(`${URL}/generators/`, 
+        {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        }
+    )
+    .then(response => response.json())
+    .then(data => console.log(data));
+}
+
+export const getGeneratorTest = async(id) => {
+    const repsonse = await fetch(`${URL}/generators/${id}`,
         {
             method: "GET",
             headers: {
@@ -92,7 +107,7 @@ export const updateGeneratorTest = async () => {
     const newName = "Integer Numbers";
     const sampleID = '68ba902aff93bb1e5322410e';
 
-    const response = await fetch(`http://localhost:${PORT}/generators-manager/${sampleID}`, {
+    const response = await fetch(`${URL}/generators-manager/${sampleID}`, {
         method: "PUT",
         headers: {
                 "Accept": "application/json",
@@ -114,7 +129,7 @@ export const updateGeneratorTest = async () => {
 export const deleteGeneratorTest = async () => {
     const sampleID = '68ba902aff93bb1e5322410e';
 
-    const response = await fetch(`http://localhost:${PORT}/generators-manager/${sampleID}`, {
+    const response = await fetch(`${URL}/generators-manager/${sampleID}`, {
         method: "DELETE",
         headers: {
                 "Accept": "application/json",

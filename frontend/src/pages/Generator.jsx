@@ -1,77 +1,78 @@
 import NavCrumbs from '../components/NavCrumbs'
 import '../css/index.css'
-import {useState, useEffect} from 'react';
+// import {useState, useEffect} from 'react';
 
-import { retrieveGenerator } from '../api/retrieveGenerator';
+// import { retrieveGenerator } from '../api/retrieveGenerator';
 import { useParams } from 'react-router-dom';
 
-function Generator() {
+function Generator()  {
     const {id} = useParams();
 
-    const [generator, setGenerator] = useState({});
-    const [generatorType, setGeneratorType] = useState("NUMBER");
+    // const [generator, setGenerator] = useState({});
+    // const [generatorType, setGeneratorType] = useState("NUMBER");
 
-    const [minState, setMinState] = useState(1);
-    const [maxState, setMaxState] = useState(100);
-    const [genState, setGenState] = useState(0);
-    const [amtState, setAmtState] = useState(1);
-    const [algorithmState, setAlgorithmState] = useState("default");
+    // const [minState, setMinState] = useState(1);
+    // const [maxState, setMaxState] = useState(100);
+    // const [genState, setGenState] = useState(0);
+    // const [amtState, setAmtState] = useState(1);
+    // const [algorithmState, setAlgorithmState] = useState("default");
     
-    useEffect(() => {
-        const fetchGenerator = async () => {
-            try {
-                const response = await retrieveGenerator(id);
+    // useEffect(() => {
+    //     const fetchGenerator = async () => {
+    //         try {
+    //             const response = await retrieveGenerator(id);
 
-                if (response.ok){
-                    const data = await response.json();
-                    const generator = data.data;
-                    if (generator !== null && generator !== undefined){
-                        setGenerator(generator);
-                    } else {
-                        setGenerator({});
-                    }
-                }
-            } catch (err) {
-                console.log("Error in fetching generator");
-            }
-        }
-        fetchGenerator()
-    }, [])
+    //             if (response.ok){
+    //                 const data = await response.json();
+    //                 const generator = data.data;
+    //                 if (generator !== null && generator !== undefined){
+    //                     setGenerator(generator);
+    //                 } else {
+    //                     setGenerator({});
+    //                 }
+    //             }
+    //         } catch (err) {
+    //             console.log("Error in fetching generator");
+    //         }
+    //     }
+    //     fetchGenerator()
+    // }, [])
 
-    const minHandler = (event) => {
-        let value = event.value;
-        if (generator.validation !== "float"){
-            value = Math.floor(value);
-        }
-        setMinState(value);
-    }
-    const maxHandler = (event) => {
-        let value = event.value;
-        if (generator.validation !== "float"){
-            value = Math.floor(value);
-        }
-        setMaxState(value);
-    }
-    const amtHandler = (event) => {
-        let amount = event.value;
-        setAmtState(amount);
-    }
-    const algorithmHandler = (event) => {
-        let option = event.value;
-        setAlgorithmState(option);
-    }
-    function genHandler(){
-        for (let i = 0; i < amtState; i++){
-            if (algorithmState === "default"){
-                setGenState(Math.random() * (maxState - minState + 1) + minState)
-            }
-        }
-    }
+    // const minHandler = (event) => {
+    //     let value = event.value;
+    //     if (generator.validation !== "float"){
+    //         value = Math.floor(value);
+    //     }
+    //     setMinState(value);
+    // }
+    // const maxHandler = (event) => {
+    //     let value = event.value;
+    //     if (generator.validation !== "float"){
+    //         value = Math.floor(value);
+    //     }
+    //     setMaxState(value);
+    // }
+    // const amtHandler = (event) => {
+    //     let amount = event.value;
+    //     setAmtState(amount);
+    // }
+    // const algorithmHandler = (event) => {
+    //     let option = event.value;
+    //     setAlgorithmState(option);
+    // }
+    // function genHandler(){
+    //     for (let i = 0; i < amtState; i++){
+    //         if (algorithmState === "default"){
+    //             setGenState(Math.random() * (maxState - minState + 1) + minState)
+    //         }
+    //     }
+    // }
 
     return(
         <div className='pb-20 full-bottom browser-size m-auto'>
             <NavCrumbs navtarget={''}></NavCrumbs>
-            <div>
+            <h1>{id}</h1>
+            {/* <div>
                 <h2>{generator.name}</h2>
                 <p>{generator.description}</p>
             </div>
@@ -128,10 +129,10 @@ function Generator() {
                         Generate
                     </button>
                 </div>
-            </div>
+            </div> */}
 
         </div>
     )
 }
 
-export default Generator
+export default Generator;

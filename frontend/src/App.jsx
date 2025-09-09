@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Generators from './pages/Generators';
 import GeneratorsManager from './pages/GeneratorsManager';
+import Generator from './pages/Generator';
 
 function App() {
   
