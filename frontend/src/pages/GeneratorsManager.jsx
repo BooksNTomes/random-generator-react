@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 
 import first from '../assets/first.svg';
 import second from '../assets/second.svg';
-import { retrieveGenerators } from '../api/retrieveGenerators';
+import { retrieveGenerators } from '../api/generators.js';
 
 function GeneratorsManager(){
     const [generators, setGenerators] = useState([]);
