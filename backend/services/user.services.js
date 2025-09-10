@@ -24,3 +24,11 @@ export const createNewUser = (username, hash) => {
     });
     newUser.save();
 }
+
+export const validPassword = (inPassword, storedPassword) => {
+    return bcrypt.compare(inPassword, storedPassword);
+}
+
+export const createToken = (user) => {
+    return jwt.sign({ userID: user._id, name: user.name}, process.env.SECRET_KEY)
+}

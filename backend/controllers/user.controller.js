@@ -1,5 +1,5 @@
 import User from "../models/user.model.js";
-import { createNewUser, hashPassword, validUser } from "../services/user.services.js";
+import { createNewUser, createToken, hashPassword, validPassword, validUser } from "../services/user.services.js";
 
 // import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
@@ -27,21 +27,32 @@ export const register = async (req,res) => {
 
 export const login = async (req, res) => {
     const {id} = req.params;
-
     const {name, password} = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({success: false, message: "Invalid User ID, User Not Found"});
     }
-
     try {
-        const user = await User.findById(id);
-        // TODO:
+        const user = await User.findOne({name:name});
 
+        if (!validPassword(password, user.password)){
+            return res.status(401).json({success: false, message:"Incorrect credentials"});
+        }
 
+        const token = createToken(user);
+
+        res.status(200).json({
+            success:true,
+            message:"Login successful",
+            token,
+            user:{
+                userID: user._id,
+                name:user.name,
+            }
+        })
     }
     catch (err) {
-        return res.status(404).json({success:false, message: "404 User Not Found"})
+        return res.status(400).json({success:false, message: "Internal Server Error"})
     }
 }
 
@@ -49,3 +60,10 @@ export const logout = async (req, res) => {
     
 }
 
+export const authenticate = () => {
+
+}
+
+export const refresh = () => {
+
+}
