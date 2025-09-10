@@ -7,9 +7,57 @@ import { useParams } from 'react-router-dom';
 
 function Generator()  {
     const {id} = useParams();
+    // General state props
+    const [generator, setGenerator] = useState(null);
+    const [generatorType, setGeneratorType] = useState(null);
+    const [algorithmType, setAlgorithmType] = useState('Math.random()');
+    const [genAmount, setGenAmount] = useState(1);
 
-    // const [generator, setGenerator] = useState({});
-    // const [generatorType, setGeneratorType] = useState("NUMBER");
+    // Specialized props
+    const [itemList, setItemList] = useState(null); // String
+    const [min, setMin] = useState(null);           // Number
+    const [max, setMax] = useState(null);           // Number
+    const [numValidation, setNumValidation] = useState(null); // Number
+
+    useEffect(() => {
+        // Retrieve generator
+        const fetchGenerator = async () => {
+            try {
+                const response = await retrieveGenerator(id);
+
+                if (response.ok){
+                    const data = await response.json();
+                    const generator = data.data;
+                    if (generator !== null && generator !== undefined){
+                        setGenerator(generator);
+                    } else {
+                        setGenerator(null);
+                    }
+                }
+            } catch (err) {
+                console.log("Error in fetching generator");
+            }
+        }
+        const setProps = (generator) => {
+            setGeneratorType(generator.type);
+            setGenAmount(1);
+            if (generator.type == "NUMBERS"){
+                setItemList(null);
+                setMin(0);
+                setMax(100);
+                setNumValidation(generator.validation);
+            }
+            else {
+                setItemList(generator.list);
+                setMin(null);
+                setMax(null);
+                setNumValidation(null);
+            }
+        }
+        // Retrieve state props based on generator type
+        fetchGenerator();
+        setProps(generator);
+    }, [])
 
     // const [minState, setMinState] = useState(1);
     // const [maxState, setMaxState] = useState(100);
