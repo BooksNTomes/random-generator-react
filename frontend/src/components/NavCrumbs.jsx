@@ -1,6 +1,6 @@
 import '../css/index.css'
 
-function NavCrumbs({navtarget}){
+export default function NavCrumbs({navtarget}){
     if (navtarget === ''){
         return (
             <div className='browser-size m-auto pt-5 mb-5'>
@@ -14,5 +14,3 @@ function NavCrumbs({navtarget}){
         </div>
     )
 }
-
-export default NavCrumbs

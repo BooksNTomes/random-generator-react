@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import '../css/index.css';
 import logo from '../assets/frame.svg';
 
-function About() {
+export default function About() {
     return (
         <div className='pt-10 pb-10 h-full browser-size m-auto full-bottom'>
             <div className="flex">
@@ -22,5 +22,3 @@ function About() {
         </div>
     )
 }
-
-export default About;

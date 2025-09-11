@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../css/index.css'
 import Card from './Card';
 
-function GeneratorManagerCard ({link, image, name, description}){
+export default function GeneratorManagerCard ({link, image, name, description}){
     return (
     <Link to={link}>
         <Card 
@@ -14,5 +14,3 @@ function GeneratorManagerCard ({link, image, name, description}){
     </Link>
     )
 }
-
-export default GeneratorManagerCard;

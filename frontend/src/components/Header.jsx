@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../css/index.css';
 
-function Header() {
+export default function Header() {
     return (
     <div className="bg-white shadow border-1 border-black/15 border-t-0">
         <div className="flex m-auto justify-between items-center browser-size">
@@ -17,5 +17,3 @@ function Header() {
     </div>
     )
 };
-
-export default Header;

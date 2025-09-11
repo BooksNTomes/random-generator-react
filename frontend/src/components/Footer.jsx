@@ -1,6 +1,6 @@
 import '../css/index.css';
 
-function Footer(){
+export default function Footer(){
     return (
     <div className="w-full shadow flex justify-between bg-white border-1 border-b-0 border-black/15">
       <div className="flex m-auto justify-between items-center browser-size">
@@ -14,5 +14,3 @@ function Footer(){
     </div>
     )
 };
-
-export default Footer;

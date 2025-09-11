@@ -1,6 +1,6 @@
 import '../css/index.css';
 
-function Card({image, name, description}){
+export default function Card({image, name, description}){
     return (
     <>
         <div className="
@@ -16,5 +16,3 @@ function Card({image, name, description}){
     </>
     )
 }
-
-export default Card
