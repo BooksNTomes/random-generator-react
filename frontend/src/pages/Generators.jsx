@@ -54,7 +54,6 @@ function Generators(){
                         name={generator.name}
                         description={generator.description}/>     
                 ))}
-                
             </div>
         </div>
     )

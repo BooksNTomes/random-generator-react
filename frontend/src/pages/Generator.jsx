@@ -31,6 +31,7 @@ function Generator()  {
                 console.log("Error in fetching generator");
             }
         }
+        fetchGenerator();
     }, [generator.type])
 
     return(
