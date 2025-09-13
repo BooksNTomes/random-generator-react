@@ -16,7 +16,6 @@ function Generator()  {
     
     useEffect(() => {
         const usedGenerator = (staticGenerators.filter((generator) => generator._id === Number(id)))[0];
-        console.log(usedGenerator);
         setGenerator(usedGenerator);
         setLoadingGenerator(false);
     },[])
