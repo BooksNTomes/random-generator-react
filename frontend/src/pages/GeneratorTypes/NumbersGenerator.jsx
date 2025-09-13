@@ -4,37 +4,59 @@ export default function NumbersGenerator({generator}) {
 
     const [minState, setMinState] = useState(1);
     const [maxState, setMaxState] = useState(100);
-    const [genState, setGenState] = useState(0);
+    const [genState, setGenState] = useState('0');
     const [amtState, setAmtState] = useState(1);
     const [algorithmState, setAlgorithmState] = useState("default");
+    const minAsNumber = Number(minState);
+    const maxAsNumber = Number(maxState);
     
     const minHandler = (event) => {
-        let value = event.value;
+        let value = event.target.value;
         if (generator.validation !== "FLOAT"){
             value = Math.floor(value);
         }
         setMinState(value);
     }
     const maxHandler = (event) => {
-        let value = event.value;
+        let value = event.target.value;
         if (generator.validation !== "FLOAT"){
             value = Math.floor(value);
         }
         setMaxState(value);
     }
+
     const amtHandler = (event) => {
-        let amount = event.value;
+        let amount = event.target.value;
         setAmtState(amount);
     }
     const algorithmHandler = (event) => {
-        let option = event.value;
+        let option = event.target.value;
         setAlgorithmState(option);
     }
     function genHandler(){
-        for (let i = 0; i < amtState; i++){
+        if (amtState == 1){
             if (algorithmState === "default"){
-                setGenState(Math.random() * (maxState - minState + 1) + minState)
+                if (generator.validation !== "FLOAT"){
+                    setGenState(Math.floor(Math.random() * (maxState - minState + 1) + minState));
+                }
+                else {
+                    setGenState(Math.random() * (maxState - minState + 1) + minState);
+                }
             }
+        }
+        else {
+            let newGenState = ``
+            for (let i = 0; i < amtState; i++){
+                if (algorithmState === "default"){
+                    if (generator.validation !== "FLOAT"){
+                        newGenState += `${(Math.floor(Math.random() * (maxState - minState + 1) + minState))} `;
+                    }
+                    else {
+                        newGenState += `${(Math.random() * (maxState - minState + 1) + minState)} `;
+                    }
+                }
+            }
+            setGenState(newGenState)
         }
     }
 
@@ -47,18 +69,16 @@ export default function NumbersGenerator({generator}) {
                         Algorithm Config:
                     </h4>
 
-
                     <div className="ml-5">
                         <h4 className="mb-5">Algorithm: <span>
                             <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2"
-                                    // onChange={algorithmHandler}
+                                    onChange={algorithmHandler}
                                     >
                                 <option value="default">Default - Math.random()</option>
                             </select>
                         </span></h4>
                     </div>
 
-                    
                     <h4 className="mb-3 embolden">
                         List Config: 
                         <span className="embolden p-1 bg-black/20">
@@ -66,28 +86,25 @@ export default function NumbersGenerator({generator}) {
                         </span>
                     </h4>
 
-
                     <div className="ml-5">
                         <h4 className="mb-5">Min: <span>
                             <input type="number" 
-                            value={minState}
-                            // onChange={minHandler}
-                            ></input>
+                            value={minAsNumber}
+                            max={maxAsNumber}
+                            onChange={e => minHandler(e)}></input>
                             
                         </span></h4>
                         <h4 className="mb-5">Max: <span>
                             <input type="number" 
-                            value={maxState}
-                            // onChange={maxHandler}
-                            ></input>
+                            value={maxAsNumber}
+                            min={minAsNumber}
+                            onChange={e => maxHandler(e)}></input>
 
                         </span></h4>
                         <h4 className="mb-5">Amount: <span>
-                            <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2">
-                                <input type="number" min="1" 
-                                // onChange={amtHandler}
-                                ></input>
-                            </select>
+                            <input type="number" min={1} 
+                            value={1}
+                            onChange={e => amtHandler(e)}></input>
                         </span></h4>
                     </div>
                 </div>
@@ -100,8 +117,7 @@ export default function NumbersGenerator({generator}) {
                     <h3>{genState}</h3>
                 </div>
                 <button className="ml-12 p-3 w-4/5 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-black/2 active:bg-black/4"
-                        // onClick={genHandler()}
-                        >
+                        onClick={() => genHandler()}>
                     Generate
                 </button>
             </div>
