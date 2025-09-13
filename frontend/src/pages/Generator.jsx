@@ -12,27 +12,27 @@ function Generator()  {
     const {id} = useParams();
     const [generator, setGenerator] = useState({});
 
-    useEffect(() => {
-        // Retrieve generator and set type
-        const fetchGenerator = async () => {
-            try {
-                const response = await retrieveGenerator(id);
+    // useEffect(() => {
+    //     // Retrieve generator and set type
+    //     const fetchGenerator = async () => {
+    //         try {
+    //             const response = await retrieveGenerator(id);
 
-                if (response.ok){
-                    const data = await response.json();
-                    const generator = data.data;
-                    if (generator !== null && generator !== undefined){
-                        setGenerator(generator);
-                    } else {
-                        setGenerator(null);
-                    }
-                }
-            } catch (err) {
-                console.log("Error in fetching generator");
-            }
-        }
-        fetchGenerator();
-    }, [generator.type])
+    //             if (response.ok){
+    //                 const data = await response.json();
+    //                 const generator = data.data;
+    //                 if (generator !== null && generator !== undefined){
+    //                     setGenerator(generator);
+    //                 } else {
+    //                     setGenerator(null);
+    //                 }
+    //             }
+    //         } catch (err) {
+    //             console.log("Error in fetching generator");
+    //         }
+    //     }
+    //     fetchGenerator();
+    // }, [generator.type])
 
     return(
         <div className='pb-20 full-bottom browser-size m-auto'>

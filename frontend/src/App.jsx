@@ -16,8 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
+
         <Route path="/generators" element={<Generators/>}/>
         <Route path="/generators-manager" element={<GeneratorsManager/>}/>
+
         <Route path="/generators/:id" element={<Generator/>}/>
       </Routes>
       <Footer></Footer>

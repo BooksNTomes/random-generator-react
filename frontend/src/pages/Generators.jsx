@@ -13,28 +13,28 @@ function Generators(){
     const [loadingGenerators, setLoadingGenerators] = useState(true);
 
     // Call Retrieve Generators from API
-    useEffect(() => {
-        const fetchGenerators = async () => {
-            try {
-                setLoadingGenerators(true);
-                const response = await retrieveGenerators();
+    // useEffect(() => {
+    //     const fetchGenerators = async () => {
+    //         try {
+    //             setLoadingGenerators(true);
+    //             const response = await retrieveGenerators();
 
-                if (response.ok){
-                    const data = await response.json();
-                    const generators = data.data;
-                    if (generators.length > 0){
-                        setGenerators(generators);
-                        setLoadingGenerators(false);
-                    } else {
-                        setGenerators([]);
-                    }
-                }
-            } catch (err) {
-                console.log("Error in fetching generators");
-            }
-        }
-        fetchGenerators();
-    }, []);
+    //             if (response.ok){
+    //                 const data = await response.json();
+    //                 const generators = data.data;
+    //                 if (generators.length > 0){
+    //                     setGenerators(generators);
+    //                     setLoadingGenerators(false);
+    //                 } else {
+    //                     setGenerators([]);
+    //                 }
+    //             }
+    //         } catch (err) {
+    //             console.log("Error in fetching generators");
+    //         }
+    //     }
+    //     fetchGenerators();
+    // }, []);
 
     return(
         <div className='browser-size m-auto full-bottom'>
@@ -42,17 +42,21 @@ function Generators(){
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
                 
                 { loadingGenerators ? (Array.from(3).map((a, index) => (
-                    <GeneratorCard
+                    <li key = {index}>
+                        <GeneratorCard
                         link={''}
                         image={''}
                         name={''}
                         description={''}/>
+                    </li>
                 ))) : generators.map(generator => (
-                    <GeneratorCard
+                    <li key= {generator._id}>
+                        <GeneratorCard
                         link={`/generators/${generator._id}`}
                         image={generator.img}
                         name={generator.name}
-                        description={generator.description}/>     
+                        description={generator.description}/>
+                    </li>
                 ))}
             </div>
         </div>

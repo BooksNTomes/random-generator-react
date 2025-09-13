@@ -12,28 +12,28 @@ function GeneratorsManager(){
     const [generators, setGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);
 
-    useEffect(() => {
-        const fetchGenerators = async () => {
-            try {
-                setLoadingGenerators(true);
-                const response = await retrieveGenerators();
+    // useEffect(() => {
+    //     const fetchGenerators = async () => {
+    //         try {
+    //             setLoadingGenerators(true);
+    //             const response = await retrieveGenerators();
 
-                if (response.ok){
-                    const data = await response.json();
-                    const generators = data.data;
-                    if (generators.length > 0){
-                        setGenerators(generators);
-                        setLoadingGenerators(false);
-                    } else {
-                        setGenerators([]);
-                    }
-                }
-            } catch (err) {
-                console.log("Error in fetching generators");
-            }
-        }
-        fetchGenerators();
-    }, []);
+    //             if (response.ok){
+    //                 const data = await response.json();
+    //                 const generators = data.data;
+    //                 if (generators.length > 0){
+    //                     setGenerators(generators);
+    //                     setLoadingGenerators(false);
+    //                 } else {
+    //                     setGenerators([]);
+    //                 }
+    //             }
+    //         } catch (err) {
+    //             console.log("Error in fetching generators");
+    //         }
+    //     }
+    //     fetchGenerators();
+    // }, []);
 
     // TODO : ADD Create Card and Add Delete Button
     return(
