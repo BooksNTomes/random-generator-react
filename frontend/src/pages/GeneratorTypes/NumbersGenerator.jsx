@@ -89,22 +89,22 @@ export default function NumbersGenerator({generator}) {
                     <div className="ml-5">
                         <h4 className="mb-5">Min: <span>
                             <input type="number" 
-                            value={minAsNumber}
+                            defaultValue={minAsNumber}
                             max={maxAsNumber}
                             onChange={e => minHandler(e)}></input>
                             
                         </span></h4>
                         <h4 className="mb-5">Max: <span>
                             <input type="number" 
-                            value={maxAsNumber}
+                            defaultValue={maxAsNumber}
                             min={minAsNumber}
                             onChange={e => maxHandler(e)}></input>
 
                         </span></h4>
                         <h4 className="mb-5">Amount: <span>
-                            <input type="number" min={1} 
-                            value={1}
-                            onChange={e => amtHandler(e)}></input>
+                            <input type="number" min={1} defaultValue={1} 
+                            onChange={event => amtHandler(event)}
+                            ></input>
                         </span></h4>
                     </div>
                 </div>

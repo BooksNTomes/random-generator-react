@@ -4,18 +4,17 @@ export default function StringsGenerator({generator}) {
     const [algorithmState, setAlgorithmState] = useState("default");
     const [listState, setListState] = useState(generator.list);
     const [amtState, setAmtState] = useState(1);
-    const [genState, setGenState] = useState(0);
+    const [genState, setGenState] = useState('');
     const initialList = generator.list;
 
-    // WIP
     const listHandler = (event, index) => {
         let newList = listState.slice();
 
         if (!event.target.checked){
-            (newList).splice(index, 1);
+            (newList).splice(index, 1, '');
         }
         else if (event.target.checked) {
-            (newList).splice(index, 0, initialList[index]);
+            (newList).splice(index, 1, initialList[index]);
         }
 
         console.log(newList)
@@ -30,13 +29,35 @@ export default function StringsGenerator({generator}) {
         setAlgorithmState(option);
     }
     function genHandler(){
-        for (let i = 0; i < amtState; i++){
+        if (amtState == 1){
             if (algorithmState === "default"){
-                setGenState(listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)]);
+                let stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
+                while ( stateCandidate === '' ||
+                        stateCandidate === undefined ||
+                        stateCandidate === null){
+                            stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
+                        }
+                setGenState(stateCandidate);
             }
         }
+        else{
+            let newGenState = ``
+            for (let i = 0; i < amtState; i++){
+                if (algorithmState === "default"){
+                    let stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
+                    while ( stateCandidate === '' ||
+                            stateCandidate === undefined ||
+                            stateCandidate === null){
+                                stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
+                            }
+                    newGenState += (stateCandidate);
+                    }
+                }
+            setGenState(newGenState);
+        }
+        
     }
-
+    
     return (
         <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md  full-bottom">
             <div className="w-1/2">
