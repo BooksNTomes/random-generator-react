@@ -1,11 +1,11 @@
+import { useState } from "react";
 
-export default function StringsGenerator() {
+export default function StringsGenerator({generator}) {
     const [algorithmState, setAlgorithmState] = useState("default");
     const [listState, setListState] = useState(generator.list);
     const [amtState, setAmtState] = useState(1);
     const [genState, setGenState] = useState(0);
 
-    
     const listHandler = (event) => {
         setListState(
             generator.list.filter((entry) => entry !== event.value)
@@ -43,7 +43,8 @@ export default function StringsGenerator() {
                     <div className="ml-5">
                         <h4 className="mb-5">Algorithm: <span>
                             <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2"
-                                    onChange={algorithmHandler}>
+                                    // onChange={algorithmHandler}
+                                    >
                                 <option value="default">Default - Math.random()</option>
                             </select>
                         </span></h4>
@@ -69,7 +70,9 @@ export default function StringsGenerator() {
                         </span></h4>
                         <h4 className="mb-5">Amount: <span>
                             <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2">
-                                <input type="number" min="1" onChange={amtHandler}></input>
+                                <input type="number" min="1" 
+                                // onChange={amtHandler}
+                                ></input>
                             </select>
                         </span></h4>
                     </div>
@@ -83,7 +86,8 @@ export default function StringsGenerator() {
                     <h3>{genState}</h3>
                 </div>
                 <button className="ml-12 p-3 w-4/5 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-black/2 active:bg-black/4"
-                        onClick={genHandler()}>
+                        // onClick={genHandler()}
+                        >
                     Generate
                 </button>
             </div>

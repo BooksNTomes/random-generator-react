@@ -1,6 +1,6 @@
 import NavCrumbs from '../components/NavCrumbs'
 import '../css/index.css'
-// import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 // import { retrieveGenerator } from '../api/retrieveGenerator';
 import { useParams } from 'react-router-dom';
@@ -12,24 +12,24 @@ import { staticGenerators } from '../api/falsedb.api';
 function Generator()  {
     const {id} = useParams();
     const [generator, setGenerator] = useState({});
-    const [loadingGenerator, setLoadingGenerator] = useState({});
+    const [loadingGenerator, setLoadingGenerator] = useState(true);
     
     useEffect(() => {
-        setGenerator(staticGenerators.filter((_id) => _id === id));
+        const usedGenerator = (staticGenerators.filter((generator) => generator._id === Number(id)))[0];
+        console.log(usedGenerator);
+        setGenerator(usedGenerator);
         setLoadingGenerator(false);
-    },[generator])
+    },[])
 
     return(
         <div className='pb-20 full-bottom browser-size m-auto'>
             <NavCrumbs navtarget={''}></NavCrumbs>
 
-            {id}
-            
-            {/* {generator.type === 'NUMBER' && 
+            {generator.type === 'NUMBER' && 
             <NumbersGenerator generator={generator}></NumbersGenerator>}
 
             {generator.type === 'STRING' &&
-            <StringsGenerator generator={generator}></StringsGenerator>} */}
+            <StringsGenerator generator={generator}></StringsGenerator>}
             
         </div>
     )

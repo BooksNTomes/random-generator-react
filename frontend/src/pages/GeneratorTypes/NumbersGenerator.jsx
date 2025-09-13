@@ -1,5 +1,7 @@
+import { useState } from "react";
 
-export default function NumbersGenerator() {
+export default function NumbersGenerator({generator}) {
+
     const [minState, setMinState] = useState(1);
     const [maxState, setMaxState] = useState(100);
     const [genState, setGenState] = useState(0);
@@ -8,14 +10,14 @@ export default function NumbersGenerator() {
     
     const minHandler = (event) => {
         let value = event.value;
-        if (generator.validation !== "float"){
+        if (generator.validation !== "FLOAT"){
             value = Math.floor(value);
         }
         setMinState(value);
     }
     const maxHandler = (event) => {
         let value = event.value;
-        if (generator.validation !== "float"){
+        if (generator.validation !== "FLOAT"){
             value = Math.floor(value);
         }
         setMaxState(value);
@@ -49,7 +51,8 @@ export default function NumbersGenerator() {
                     <div className="ml-5">
                         <h4 className="mb-5">Algorithm: <span>
                             <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2"
-                                    onChange={algorithmHandler}>
+                                    // onChange={algorithmHandler}
+                                    >
                                 <option value="default">Default - Math.random()</option>
                             </select>
                         </span></h4>
@@ -66,16 +69,24 @@ export default function NumbersGenerator() {
 
                     <div className="ml-5">
                         <h4 className="mb-5">Min: <span>
-                            <input type="number" onChange={minHandler}>{minState}</input>
+                            <input type="number" 
+                            value={minState}
+                            // onChange={minHandler}
+                            ></input>
                             
                         </span></h4>
                         <h4 className="mb-5">Max: <span>
-                            <input type="number" onChange={maxHandler}>{maxState}</input>
+                            <input type="number" 
+                            value={maxState}
+                            // onChange={maxHandler}
+                            ></input>
 
                         </span></h4>
                         <h4 className="mb-5">Amount: <span>
                             <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2">
-                                <input type="number" min="1" onChange={amtHandler}></input>
+                                <input type="number" min="1" 
+                                // onChange={amtHandler}
+                                ></input>
                             </select>
                         </span></h4>
                     </div>
@@ -89,7 +100,8 @@ export default function NumbersGenerator() {
                     <h3>{genState}</h3>
                 </div>
                 <button className="ml-12 p-3 w-4/5 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-black/2 active:bg-black/4"
-                        onClick={genHandler()}>
+                        // onClick={genHandler()}
+                        >
                     Generate
                 </button>
             </div>
