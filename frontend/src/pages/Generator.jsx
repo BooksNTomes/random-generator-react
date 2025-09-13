@@ -6,11 +6,36 @@ import '../css/index.css'
 import { useParams } from 'react-router-dom';
 import NumbersGenerator from './GeneratorTypes/NumbersGenerator';
 import StringsGenerator from './GeneratorTypes/StringsGenerator';
+import { staticGenerators } from '../api/falsedb.api';
 
 
 function Generator()  {
     const {id} = useParams();
     const [generator, setGenerator] = useState({});
+    const [loadingGenerator, setLoadingGenerator] = useState({});
+    
+    useEffect(() => {
+        setGenerator(staticGenerators.filter((_id) => _id === id));
+        setLoadingGenerator(false);
+    },[generator])
+
+    return(
+        <div className='pb-20 full-bottom browser-size m-auto'>
+            <NavCrumbs navtarget={''}></NavCrumbs>
+
+            {id}
+            
+            {/* {generator.type === 'NUMBER' && 
+            <NumbersGenerator generator={generator}></NumbersGenerator>}
+
+            {generator.type === 'STRING' &&
+            <StringsGenerator generator={generator}></StringsGenerator>} */}
+            
+        </div>
+    )
+}
+
+export default Generator;
 
     // useEffect(() => {
     //     // Retrieve generator and set type
@@ -33,19 +58,3 @@ function Generator()  {
     //     }
     //     fetchGenerator();
     // }, [generator.type])
-
-    return(
-        <div className='pb-20 full-bottom browser-size m-auto'>
-            <NavCrumbs navtarget={''}></NavCrumbs>
-            
-            {generator.type === 'NUMBER' && 
-            <NumbersGenerator generator={generator}></NumbersGenerator>}
-
-            {generator.type === 'STRING' &&
-            <StringsGenerator generator={generator}></StringsGenerator>}
-            
-        </div>
-    )
-}
-
-export default Generator;

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import GeneratorCard from '../components/GeneratorCard';
+import GeneratorCard from '../components/Cards/GeneratorCard.jsx';
 import NavCrumbs from '../components/NavCrumbs';
 import '../css/index.css';
 import {useState, useEffect} from 'react';
@@ -7,10 +7,38 @@ import {useState, useEffect} from 'react';
 import first from '../assets/first.svg';
 import second from '../assets/second.svg';
 import { retrieveGenerators } from '../api/generators.api.js';
+import { staticGenerators } from '../api/falsedb.api.js';
 
 function Generators(){
     const [generators, setGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);
+
+    useEffect(() => {
+        setGenerators(staticGenerators);
+        setLoadingGenerators(false);
+    },[generators])
+
+    return(
+        <div className='browser-size m-auto full-bottom'>
+            <NavCrumbs navtarget={''}></NavCrumbs>
+            <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
+                
+                { loadingGenerators ? (Array.from(3).map((a, index) => (
+                    <li key = {index}>
+                        <GeneratorLoadingCard/>
+                    </li>
+                ))) : generators.map(generator => (
+                    <li key= {generator._id}>
+                        <GeneratorCard
+                        generator={generator}/>
+                    </li>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+export default Generators;
 
     // Call Retrieve Generators from API
     // useEffect(() => {
@@ -35,32 +63,3 @@ function Generators(){
     //     }
     //     fetchGenerators();
     // }, []);
-
-    return(
-        <div className='browser-size m-auto full-bottom'>
-            <NavCrumbs navtarget={''}></NavCrumbs>
-            <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
-                
-                { loadingGenerators ? (Array.from(3).map((a, index) => (
-                    <li key = {index}>
-                        <GeneratorCard
-                        link={''}
-                        image={''}
-                        name={''}
-                        description={''}/>
-                    </li>
-                ))) : generators.map(generator => (
-                    <li key= {generator._id}>
-                        <GeneratorCard
-                        link={`/generators/${generator._id}`}
-                        image={generator.img}
-                        name={generator.name}
-                        description={generator.description}/>
-                    </li>
-                ))}
-            </div>
-        </div>
-    )
-}
-
-export default Generators;

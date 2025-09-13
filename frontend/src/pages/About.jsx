@@ -1,5 +1,3 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
 import '../css/index.css';
 import logo from '../assets/frame.svg';
 
