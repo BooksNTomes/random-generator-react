@@ -1,25 +1,28 @@
-import { useState, useEffect } from "react";
+"use client";
+import { useState, useEffect, useRef } from "react";
+import ListPopup from "../../components/Popups/ListPopup";
 
 export default function StringsGenerator({generator}) {
     const [algorithmState, setAlgorithmState] = useState("default");
-    const [listState, setListState] = useState(generator.list);
     const [amtState, setAmtState] = useState(1);
     const [genState, setGenState] = useState('');
+    const [listState, setListState] = useState(generator.list);
+
+    const listDialogRef = useRef(null);
     const initialList = generator.list;
 
     const listHandler = (event, index) => {
         let newList = listState.slice();
-
         if (!event.target.checked){
             (newList).splice(index, 1, '');
         }
         else if (event.target.checked) {
             (newList).splice(index, 1, initialList[index]);
         }
-
-        console.log(newList)
         setListState(newList);
     }
+
+
     const amtHandler = (event) => {
         let amount = event.target.value;
         setAmtState(amount);
@@ -60,6 +63,18 @@ export default function StringsGenerator({generator}) {
     
     return (
         <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md  full-bottom">
+            <dialog ref={listDialogRef} className="w-[300px] h-[300px] p-[30px] m-auto">
+                {initialList && initialList.map((entry, index) => (
+                    <div key={index}>
+                        <span>
+                            <input type="checkbox" onChange={event => listHandler(event, index)} name={entry} defaultChecked={listState[index] 
+                            !== '' ? true : false}/>
+                            <label htmlFor={entry}>{entry}</label>
+                        </span>
+                    </div>
+                ))}
+                <button className="mt-[10px] border-1 border-black rounded p-[10px]" onClick={() => listDialogRef.current?.close()}>Close</button>
+            </dialog>
             <div className="w-1/2">
                 <h2>Config</h2>
                 <div className="p-5 border-1 border-black/5 rounded-[5px] shadow-sm">
@@ -86,15 +101,8 @@ export default function StringsGenerator({generator}) {
 
                     <div className="ml-5">
                         <h4 className="mb-5">List: <span>
-                            <button>Open List</button>
+                            <button className="border-black border-1" onClick={() => {listDialogRef.current?.showModal()}}>Open List</button>
                         </span></h4>
-
-                        {initialList && initialList.map((entry, index) => (
-                            <span key={index}>
-                                <input type="checkbox" onChange={event => listHandler(event, index)} name={entry} defaultChecked={true}/>
-                                <label htmlFor={entry}>{entry}</label>
-                            </span>
-                        ))}
 
                         <h4 className="mb-5">Amount: <span>
                             <input type="number" min="1" 
