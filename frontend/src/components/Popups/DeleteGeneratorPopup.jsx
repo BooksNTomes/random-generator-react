@@ -1,12 +1,12 @@
 
-export default function DeleteGeneratorPopup(){
+export default function DeleteGeneratorPopup({closeHandler}){
 
     return(
         <>
             <h3>Delete Generator?</h3>
             <div>
                 <button>Yes</button>
-                <button>No</button>
+                <button onClick={closeHandler}>No</button>
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 import NavCrumbs from "../NavCrumbs";
 
-export default function CreateGeneratorPopup() {
+export default function CreateGeneratorPopup({closeHandler}) {
 
     return(
         <div>
@@ -32,7 +32,7 @@ export default function CreateGeneratorPopup() {
                 </select>
             </div>
             <div>
-                <button>Cancel</button>
+                <button onClick={closeHandler}>Cancel</button>
                 <button>Preview</button>
                 <button>Create</button>
             </div>

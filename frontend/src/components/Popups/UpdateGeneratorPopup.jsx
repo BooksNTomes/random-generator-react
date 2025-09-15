@@ -1,7 +1,8 @@
+import NavCrumbs from "../NavCrumbs";
 
 export default function UpdateGeneratorPopup({generator}){
     return(
-        <div>
+        <>
             <NavCrumbs></NavCrumbs>
             <div>
                 <div>
@@ -32,8 +33,8 @@ export default function UpdateGeneratorPopup({generator}){
             <div>
                 <button>Cancel</button>
                 <button>Preview</button>
-                <button>Create</button>
+                <button>Update</button>
             </div>
-        </div>
+        </>
     )
 }

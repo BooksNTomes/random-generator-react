@@ -3,11 +3,5 @@ import '../../css/index.css';
 import Card from './Card';
 
 export default function GeneratorLoadingCard (){
-    return (
-        <Card 
-            image={''}
-            name={''}
-            description={''}>
-        </Card>
-    )
+    return
 }
