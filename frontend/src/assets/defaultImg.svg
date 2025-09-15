@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="321" height="152" viewBox="0 0 321 152" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="path_1" d="M304 0C306.762 0 309 2.23822 309 5L309 135C309 137.762 306.762 140 304 140L5 140C2.23828 140 0 137.762 0 135L0 5C0 2.23822 2.23828 0 5 0L304 0Z" />
+    <filter color-interpolation-filters="sRGB" x="-307" y="-138" width="309" height="140" id="filter_2">
+      <feFlood flood-opacity="0" result="BackgroundImageFix_1" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" in="SourceAlpha" />
+      <feOffset dx="0" dy="0" />
+      <feGaussianBlur stdDeviation="2" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.251 0" />
+      <feBlend mode="normal" in2="BackgroundImageFix_1" result="Shadow_2" />
+      <feBlend mode="normal" in="SourceGraphic" in2="Shadow_2" result="Shape_3" />
+    </filter>
+    <clipPath id="clip_path_3">
+      <rect width="309" height="140" rx="5" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#clip_path_3)" transform="translate(6 6)" filter="url(#filter_2)">
+    <use p3:href="#path_1" fill="#000000" fill-rule="evenodd" fill-opacity="0.051" xmlns:p3="http://www.w3.org/1999/xlink" />
+    <use p3:href="#path_1" fill="#FFFFFF" fill-rule="evenodd" xmlns:p3="http://www.w3.org/1999/xlink" />
+  </g>
+</svg>

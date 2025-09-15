@@ -1,16 +1,22 @@
-import { Link } from 'react-router-dom';
 import '../../css/index.css';
 import Card from './Card';
 
-export default function GeneratorManagerCard ({link, image, name, description}){
+// Todos
+// onclick -> open update generator modal
+// onclick delete -> open delete generator modal
+// Different Card altogether
+
+export default function GeneratorManagerCard ({generator}){
     return (
-    <Link to={link}>
-        <Card 
-            image={image}
-            name={name}
-            description={description}>
-        </Card>
-        <button>Delete</button>
-    </Link>
+    <>
+        <button onClick={() => console.log("WELLL!")}>
+            <Card 
+                image={generator.image}
+                name={generator.name}
+                description={generator.description}>
+            </Card>
+        </button>
+        <button onClick={() => console.log("CLICKED!")}>Delete</button>
+    </>
     )
 }

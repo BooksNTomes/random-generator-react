@@ -1,5 +1,4 @@
 
-
 export default function ListPopup({itemsList, itemToggle}){
 
     return (
