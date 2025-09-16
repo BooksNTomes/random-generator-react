@@ -6,7 +6,7 @@ import Card from '../components/Cards/Card.jsx';
 
 function Home() {
     return (
-        <div className='browser-size m-auto full-bottom'>
+        <div className='browser-size m-auto'>
             <div className='pt-10 pb-10 border-b-1 border-black/10'>
                 <div className="flex justify-between items-center ">
                     <img className="ml-auto size-70" src={logo} alt="hero-img"></img>

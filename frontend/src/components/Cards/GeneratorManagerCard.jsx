@@ -2,11 +2,6 @@ import '../../css/index.css';
 import Card from './Card';
 import defaultImg from '../../assets/defaultImg.svg'
 
-// Todos
-// onclick -> open update generator modal
-// onclick delete -> open delete generator modal
-// Different Card altogether
-
 export default function GeneratorManagerCard ({generator, updateHandler, deleteHandler}){
     return (
     <>

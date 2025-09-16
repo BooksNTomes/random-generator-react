@@ -46,7 +46,7 @@ function GeneratorsManager(){
 
     // TODO : ADD Create Card and Add Delete Button
     return(
-        <div className='browser-size m-auto full-bottom'>
+        <div className='browser-size m-auto'>
             <NavCrumbs navtarget={''}></NavCrumbs>
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
 

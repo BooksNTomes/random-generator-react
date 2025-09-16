@@ -21,7 +21,7 @@ function Generator()  {
     },[])
 
     return(
-        <div className='pb-20 full-bottom browser-size m-auto'>
+        <div className='pb-20 browser-size m-auto'>
             <NavCrumbs navtarget={generator.name}></NavCrumbs>
             <h1>{generator.name}</h1>
             <p className='ptag-xl mb-5'>{generator.description}</p>

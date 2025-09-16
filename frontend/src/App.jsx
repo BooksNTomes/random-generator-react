@@ -11,12 +11,9 @@ import GeneratorsManager from './pages/GeneratorsManager';
 function App() {
   
   return (
-    <>
-      {// RE: Footer Issues TIP: add min height and width of 100dv as initial size for body
-       // Flex and position footer at end
-      }
+    <div className="min-h-dvh min-w-dvw flex flex-col">
       <Header></Header>
-      <Routes>
+      <Routes className="flex-grow">
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
 
@@ -27,7 +24,7 @@ function App() {
         <Route path="/generators-manager" element={<GeneratorsManager/>}/>
       </Routes>
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 

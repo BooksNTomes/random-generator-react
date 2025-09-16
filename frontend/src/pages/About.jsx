@@ -3,7 +3,7 @@ import logo from '../assets/frame.svg';
 
 export default function About() {
     return (
-        <div className='pt-10 pb-10 h-full browser-size m-auto full-bottom'>
+        <div className='pt-10 pb-10 h-full browser-size m-auto'>
             <div className="flex">
                 <div className='w-3/4 p-2 flex flex-col gap-2'>
                     <h2 className='mb-5'>Why Random Number Generators?</h2>

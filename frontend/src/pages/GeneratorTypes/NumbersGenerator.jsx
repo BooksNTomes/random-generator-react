@@ -61,7 +61,7 @@ export default function NumbersGenerator({generator}) {
     }
 
     return (
-        <div className="flex gap-5 p-5 border-1 border-black/15 rounded-[5px] shadow-md full-bottom">
+        <div className="flex gap-5 p-5 border-1 border-black/15 rounded-[5px] shadow-md">
             <div className="w-1/2">
                 <h2>Config</h2>
                 <div className="p-5 border-1 border-black/5 rounded-[5px] shadow-sm">

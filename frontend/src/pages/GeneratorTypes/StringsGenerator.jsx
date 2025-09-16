@@ -62,7 +62,7 @@ export default function StringsGenerator({generator}) {
     }
     
     return (
-        <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md  full-bottom">
+        <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md">
             <dialog ref={listDialogRef} className="w-[300px] h-[300px] p-[30px] m-auto">
                 {initialList && initialList.map((entry, index) => (
                     <div key={index}>
