@@ -1,5 +1,25 @@
+import { useRef, useState } from "react"
 
-export default function CreateGeneratorPopup({closeHandler}) {
+export default function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
+    const [generator, setGenerator] = useState({});
+    const nameRef = useRef();
+    const descriptionRef = useRef();
+    const imageRef = useRef();
+    const typeRef = useRef();
+    const listRef = useRef();
+    const validationRef = useRef();
+    
+    const handleChange = () => {
+        const newGenerator = {
+            name: nameRef.current?.value,
+            description: descriptionRef.current?.value,
+            image: '',
+            type: typeRef.current?.value,
+            list: [],
+            validation: validationRef.current?.value
+        }
+        setGenerator(newGenerator);
+    }
 
     return(
         <div className="flex flex-col gap-10">
@@ -7,20 +27,24 @@ export default function CreateGeneratorPopup({closeHandler}) {
              <div className="flex gap-5">
                 <div className="flex flex-col">
                     <label>Name</label>
-                    <input className="border-1 border-black min-w-[400px] " type="text"></input>
+                    <input className="border-1 border-black min-w-[400px] " type="text" 
+                    ref={nameRef} onChange={() => handleChange()}></input>
                     <label>Description</label>
-                    <textarea className="border-1 border-black min-w-[400px] min-h-[125px] max-h-[125px]"></textarea>
+                    <textarea className="border-1 border-black min-w-[400px] min-h-[125px] max-h-[125px]" 
+                    ref={descriptionRef} onChange={() => handleChange()}></textarea>
                 </div>
                 <div className="flex flex-col min-w-[200px]">
                     <label>Image</label>
                     {/**TODO:  */}
-                    <input className="" type="image"></input>
+                    <input className="" type="image"
+                    ref={imageRef} onChange={() => handleChange()}></input>
                 </div>
             </div>
             <div className="flex gap-5">
                 <div className="flex flex-col gap-1">
                     <label>Type</label>
-                    <select className="border-1 border-black/30 p-1">
+                    <select className="border-1 border-black/30 p-1"
+                    ref={typeRef} onChange={() => handleChange()}>
                         <option>number</option>
                         <option>string</option>
                     </select>
@@ -31,7 +55,8 @@ export default function CreateGeneratorPopup({closeHandler}) {
                 </div>
                 <div className="flex flex-col gap-1">
                     <label>Validation</label>
-                    <select className="border-1 border-black/30 p-1">
+                    <select className="border-1 border-black/30 p-1"
+                    ref={validationRef} onChange={() => handleChange()}>
                         <option>integer</option>
                         <option>float</option>
                     </select>
@@ -40,7 +65,7 @@ export default function CreateGeneratorPopup({closeHandler}) {
             <div className="flex gap-10 justify-end">
                 <button onClick={closeHandler}>Cancel</button>
                 <button>Preview</button>
-                <button>Create</button>
+                <button onClick={() => createGeneratorHandler(generator)}>Create</button>
             </div>
         </div>
     )
