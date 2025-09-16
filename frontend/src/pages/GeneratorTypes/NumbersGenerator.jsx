@@ -133,7 +133,7 @@ export default function NumbersGenerator({generator}) {
                     <h3>{genState}</h3>
                 </div>
             </div>
-            <button className="absolute bottom-10 right-65 w-5/16 p-3 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-[hsl(0,0%,90%)] active:bg-[hsl(0,0%,80%)] bg-white"
+            <button className="absolute bottom-10 right-64.5 w-5/16 p-3 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-[hsl(0,0%,90%)] active:bg-[hsl(0,0%,80%)] bg-white"
                     onClick={() => genHandler()}>
                 Generate
             </button>

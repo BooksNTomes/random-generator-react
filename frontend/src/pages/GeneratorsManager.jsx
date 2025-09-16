@@ -39,6 +39,10 @@ function GeneratorsManager(){
         ref.current?.close();
     }
 
+    const cancelHandler = (ref) => {
+        ref.current?.cancel();
+    }
+
     useEffect(() => {
         setGenerators(staticGenerators);
         setLoadingGenerators(false);
@@ -50,17 +54,20 @@ function GeneratorsManager(){
             <NavCrumbs navtarget={''}></NavCrumbs>
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
 
-                <dialog ref={createRef}>
+                <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={createRef}>
                     <CreateGeneratorPopup closeHandler={() => closeHandler(createRef)}></CreateGeneratorPopup>
                 </dialog>
 
-                <dialog ref={deleteRef}>
+                <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={deleteRef}>
                     <DeleteGeneratorPopup closeHandler={() => closeHandler(deleteRef)}></DeleteGeneratorPopup>
                 </dialog>
 
-                <dialog ref={updateRef}>
+                <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={updateRef}>
                     {(activeGenerator !== null) && 
-                    <UpdateGeneratorPopup generator={activeGenerator}></UpdateGeneratorPopup>}
+                    <UpdateGeneratorPopup 
+                    generator={activeGenerator}
+                    closeHandler={() => closeHandler(updateRef)}
+                    ></UpdateGeneratorPopup>}
                 </dialog>
 
                 { loadingGenerators ? (Array.from(3).map((a, index) => (

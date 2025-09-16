@@ -1,37 +1,43 @@
-import NavCrumbs from "../NavCrumbs";
 
 export default function CreateGeneratorPopup({closeHandler}) {
 
     return(
-        <div>
-            <NavCrumbs></NavCrumbs>
-            <div>
-                <div>
+        <div className="flex flex-col gap-10">
+            <h3>Generators &gt; Create</h3>
+             <div className="flex gap-5">
+                <div className="flex flex-col">
                     <label>Name</label>
-                    <input type="text"></input>
+                    <input className="border-1 border-black min-w-[400px] " type="text"></input>
                     <label>Description</label>
-                    <input type="text"></input>
+                    <textarea className="border-1 border-black min-w-[400px] min-h-[125px] max-h-[125px]"></textarea>
                 </div>
-                <div>
+                <div className="flex flex-col min-w-[200px]">
                     <label>Image</label>
-                    <input type="image"></input>
+                    {/**TODO:  */}
+                    <input className="" type="image"></input>
                 </div>
             </div>
-            <div>
-                <label>Type</label>
-                <select>
-                    <option>number</option>
-                    <option>string</option>
-                </select>
-                <label>List</label>
-                <button></button>
-                <label>Validation</label>
-                <select>
-                    <option>integer</option>
-                    <option>float</option>
-                </select>
+            <div className="flex gap-5">
+                <div className="flex flex-col gap-1">
+                    <label>Type</label>
+                    <select className="border-1 border-black/30 p-1">
+                        <option>number</option>
+                        <option>string</option>
+                    </select>
+                </div>
+                <div className="flex flex-col gap-1">
+                    <label>List</label>
+                    <button className="border-1 border-black/30 p-1">Open List</button>
+                </div>
+                <div className="flex flex-col gap-1">
+                    <label>Validation</label>
+                    <select className="border-1 border-black/30 p-1">
+                        <option>integer</option>
+                        <option>float</option>
+                    </select>
+                </div>
             </div>
-            <div>
+            <div className="flex gap-10 justify-end">
                 <button onClick={closeHandler}>Cancel</button>
                 <button>Preview</button>
                 <button>Create</button>
