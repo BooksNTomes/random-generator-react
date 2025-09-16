@@ -13,7 +13,7 @@ export default function UpdateGeneratorPopup({generator, closeHandler}){
                 <div className="flex flex-col min-w-[200px]">
                     <label>Image</label>
                     {/**TODO:  */}
-                    <input className="" type="image" defaultValue={generator.image}></input>
+                    <input className="" type="file" defaultValue={generator.image}></input>
                 </div>
             </div>
             <div className="flex gap-5">

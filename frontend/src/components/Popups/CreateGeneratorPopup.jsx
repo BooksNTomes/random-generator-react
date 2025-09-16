@@ -36,7 +36,7 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
                 <div className="flex flex-col min-w-[200px]">
                     <label>Image</label>
                     {/**TODO:  */}
-                    <input className="" type="image"
+                    <input className="" type="file"
                     ref={imageRef} onChange={() => handleChange()}></input>
                 </div>
             </div>
