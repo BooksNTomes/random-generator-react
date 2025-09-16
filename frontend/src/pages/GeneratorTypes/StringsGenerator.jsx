@@ -77,7 +77,7 @@ export default function StringsGenerator({generator}) {
             </dialog>
             <div className="w-1/2">
                 <h2>Config</h2>
-                <div className="p-5 border-1 border-black/5 rounded-[5px] shadow-sm">
+                <div className="p-5 h-[350px] border-1 border-black/5 rounded-[5px] shadow-sm">
                     <h4 className="mb-3 embolden">
                         Algorithm Config:
                     </h4>
@@ -92,23 +92,37 @@ export default function StringsGenerator({generator}) {
                         </span></h4>
                     </div>
                     
-                    <h4 className="mb-3 embolden">
-                        List Config: 
-                        <span className="embolden p-1 bg-black/20">
+                    <h4 className="mb-5 embolden flex">
+                        <div className="flex-grow">
+                            List Config: 
+                        </div>
+                        <div className="ml-10 embolden p-1 bg-black/20 ptag-sm min-w-[300px]">
                             this generator does not allow direct modification
-                        </span>
+                        </div>
                     </h4>
 
                     <div className="ml-5">
-                        <h4 className="mb-5">List: <span>
-                            <button className="border-black border-1" onClick={() => {listDialogRef.current?.showModal()}}>Open List</button>
-                        </span></h4>
+                        <h4 className="mb-5 flex">
+                            <div className="flex-grow">
+                                List: 
+                            </div>
+                            <div>
+                                <button className="p-1 rounded border-1 border-black/10 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]" 
+                                onClick={() => {listDialogRef.current?.showModal()}}>Open List</button>
+                            </div>
+                        </h4>
 
-                        <h4 className="mb-5">Amount: <span>
-                            <input type="number" min="1" 
-                            onChange={event => amtHandler(event)}
-                            ></input>
-                        </span></h4>
+                        <h4 className="mb-5 flex">
+                            <div className="flex-grow">
+                                Amount: 
+                            </div>
+                            <span>
+                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]" 
+                                type="number" min="1" defaultValue={1}
+                                onChange={event => amtHandler(event)}
+                                ></input>
+                            </span>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -116,10 +130,10 @@ export default function StringsGenerator({generator}) {
 
             <div className="w-1/2">
                 <h2>Output</h2>
-                <div className="p-5 h-7/10 border-1 border-black/5 rounded-[5px] shadow-sm">
+                <div className="p-5 h-[350px] border-1 border-black/5 rounded-[5px] shadow-sm">
                     <h3>{genState}</h3>
                 </div>
-                <button className="ml-12 p-3 w-4/5 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-black/2 active:bg-black/4"
+                <button className="absolute bottom-10 right-65 w-5/16 p-3 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-[hsl(0,0%,90%)] active:bg-[hsl(0,0%,80%)] bg-white"
                         onClick={() => genHandler()}>
                     Generate
                 </button>
