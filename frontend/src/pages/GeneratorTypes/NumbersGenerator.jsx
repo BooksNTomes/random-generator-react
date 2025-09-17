@@ -70,13 +70,22 @@ export default function NumbersGenerator({generator}) {
                     </h4>
 
                     <div className="ml-5">
-                        <h4 className="mb-5">Algorithm: <span>
-                            <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2"
-                                    onChange={algorithmHandler}
-                                    >
-                                <option value="default">Default - Math.random()</option>
-                            </select>
-                        </span></h4>
+                        <h4 className="mb-5 flex">
+                        
+                            <div className="flex-grow">
+                                Algorithm: 
+                            </div>
+                            
+                            <span>
+                                <select className="border-1 border-black/5 rounded-[5px] p-1 hover:bg-black/2
+                                                    w-[245px]"
+                                        onChange={algorithmHandler}
+                                        >
+                                    <option value="default">Default - Math.random()</option>
+                                </select>
+                        </span>
+                        
+                        </h4>
                     </div>
 
                     <h4 className="mb-5 embolden flex">
@@ -94,7 +103,8 @@ export default function NumbersGenerator({generator}) {
                                 Min: 
                             </div>
                             <div className="ml-5">
-                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]" type="number" 
+                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]
+                                w-[245px]" type="number" 
                                 defaultValue={minAsNumber}
                                 max={maxAsNumber}
                                 onChange={e => minHandler(e)}></input>
@@ -105,7 +115,8 @@ export default function NumbersGenerator({generator}) {
                                 Max: 
                             </div>
                             <div className="ml-5">
-                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]" type="number" 
+                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]
+                                w-[245px]" type="number" 
                                 defaultValue={maxAsNumber}
                                 min={minAsNumber}
                                 onChange={e => maxHandler(e)}></input>
@@ -116,7 +127,8 @@ export default function NumbersGenerator({generator}) {
                                 Amount: 
                             </div>
                             <div className="ml-5">
-                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]" 
+                                <input className="border-1 border-black/10 pl-2 pr-1 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]
+                                w-[245px]" 
                                 type="number" min={1} defaultValue={1} 
                                 onChange={event => amtHandler(event)}
                                 ></input>

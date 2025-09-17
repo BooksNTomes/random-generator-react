@@ -1,7 +1,11 @@
 import { useRef, useState } from "react"
+import PreviewGeneratorPopup from "./PreviewGeneratorPopup";
 
 export default function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
     const [generator, setGenerator] = useState({});
+    const [showPreview, setShowPreview] = useState(false);
+    const [preview, setPreview] = useState();
+
     const nameRef = useRef();
     const descriptionRef = useRef();
     const imageRef = useRef();
@@ -21,8 +25,27 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
         setGenerator(newGenerator);
     }
 
+    const handlePreview = () => {
+        const newGenerator = {
+            name: nameRef.current?.value,
+            description: descriptionRef.current?.value,
+            image: '',
+            type: typeRef.current?.value,
+            list: [],
+            validation: validationRef.current?.value
+        }
+        const newPreview = (
+            <PreviewGeneratorPopup generator={newGenerator}></PreviewGeneratorPopup>
+        )
+        setShowPreview(true);
+        setPreview(newPreview);
+    }
+
     return(
         <div className="flex flex-col gap-10">
+
+            {showPreview && preview}
+
             <h3>Generators &gt; Create</h3>
              <div className="flex gap-5">
                 <div className="flex flex-col">
@@ -35,7 +58,6 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
                 </div>
                 <div className="flex flex-col min-w-[200px]">
                     <label>Image</label>
-                    {/**TODO:  */}
                     <input className="" type="file"
                     ref={imageRef} onChange={() => handleChange()}></input>
                 </div>
@@ -45,8 +67,8 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
                     <label>Type</label>
                     <select className="border-1 border-black/30 p-1"
                     ref={typeRef} onChange={() => handleChange()}>
-                        <option>number</option>
-                        <option>string</option>
+                        <option>NUMBER</option>
+                        <option>STRING</option>
                     </select>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -57,14 +79,14 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
                     <label>Validation</label>
                     <select className="border-1 border-black/30 p-1"
                     ref={validationRef} onChange={() => handleChange()}>
-                        <option>integer</option>
-                        <option>float</option>
+                        <option>INTEGER</option>
+                        <option>FLOAT</option>
                     </select>
                 </div>
             </div>
             <div className="flex gap-10 justify-end">
                 <button onClick={closeHandler}>Cancel</button>
-                <button>Preview</button>
+                <button onClick={() => handlePreview()}>Preview</button>
                 <button onClick={() => createGeneratorHandler(generator)}>Create</button>
             </div>
         </div>
