@@ -5,6 +5,7 @@ import {useState, useEffect, useRef} from 'react';
 import { retrieveGenerators } from '../api/generators.api.js';
 import { staticGenerators } from '../api/falsedb.api.js';
 
+// TODO: Place all popup components in one Popup Component Perhaps?
 import GeneratorManagerCard from '../components/Cards/GeneratorManagerCard.jsx';
 import GeneratorLoadingCard from '../components/Cards/GeneratorLoadingCard.jsx';
 import GeneratorCreateCard from '../components/Cards/GeneratorCreateCard.jsx';
@@ -14,22 +15,26 @@ import UpdateGeneratorPopup from '../components/Popups/UpdateGeneratorPopup.jsx'
 
 function GeneratorsManager(){
     const [generators, setGenerators] = useState([]);
-    const [savedGenerators, setSavedGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);
     const [activeGenerator, setActiveGenerator] = useState(null);
+    const [isCreating, setIsCreating] = useState(false);
+    const updateRef = useRef(null);
     const createRef = useRef(null);
     const deleteRef = useRef(null);
-    const updateRef = useRef(null);
+    
+    // Temporary (only for testing purposes)
+    const [savedGenerators, setSavedGenerators] = useState([]);
 
     // Initialization
     useEffect(() => {
         setGenerators(staticGenerators);
-        setSavedGenerators(staticGenerators);
+        // setSavedGenerators(staticGenerators);
         setLoadingGenerators(false);
     },[])
     
     // Modals
     const createHandler = () => {
+        setIsCreating(!isCreating);
         createRef.current?.showModal();
     }
     const updateHandler = (id) => {
@@ -41,6 +46,7 @@ function GeneratorsManager(){
         deleteRef.current?.showModal();
     }
     const closeHandler = (ref) => {
+        setIsCreating(!isCreating);
         ref.current?.close();
     }
     const cancelHandler = (ref) => {
@@ -72,18 +78,19 @@ function GeneratorsManager(){
         closeHandler(createRef);
     }
 
-
-
-    // TODO : ADD Create Card and Add Delete Button
     return(
         <div className='browser-size m-auto'>
             <NavCrumbs navtarget={''}></NavCrumbs>
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
 
             <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={createRef}>
-                <CreateGeneratorPopup closeHandler={() => closeHandler(createRef)}
-                    createGeneratorHandler={createGenerator}
-                ></CreateGeneratorPopup>
+                {isCreating ? 
+                    <CreateGeneratorPopup closeHandler={() => closeHandler(createRef)}
+                        createGeneratorHandler={createGenerator}
+                    ></CreateGeneratorPopup>
+                    :
+                    <></>
+                }
             </dialog>
 
             <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={deleteRef}>
