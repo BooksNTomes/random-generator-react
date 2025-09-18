@@ -1,7 +1,9 @@
 import {useState, useRef, useEffect} from 'react';
+import { types, validations } from '../constants/generator.constants';
+import { InputContainer, ListContainer, SelectContainer } from './FormComponents';
 
 // Generators
-export function CreateForm({closeHandler, createGeneratorHandler}) {
+export function CreateForm({closeHandler, previewHandler, createGeneratorHandler}) {
     const [generator, setGenerator] = useState({});
     const [listState, setListState] = useState([]);
 
@@ -15,57 +17,33 @@ export function CreateForm({closeHandler, createGeneratorHandler}) {
 
     return(
         <div className="flex flex-col gap-10">
-
             <h3>Generators &gt; Create</h3>
-
             <div className="flex gap-5">
                 <div className="flex flex-col">
+                    <InputContainer label="Name">
+                        <input name="name" type="text"  className="border-1 border-black min-w-[400px] " 
+                        onChange={(event) => handleChange(event)}></input>
+                    </InputContainer>
 
-                    <label>Name</label>
-                    <input className="border-1 border-black min-w-[400px] " type="text" 
-                    onChange={(event) => handleChange(event)}></input>
-
-                    <label>Description</label>
-                    <textarea className="border-1 border-black min-w-[400px] min-h-[125px] max-h-[125px]" 
-                    onChange={(event) => handleChange(event)}></textarea>
-
+                    <InputContainer label="Description">
+                        <textarea name="description" className="border-1 border-black min-w-[400px] min-h-[125px] max-h-[125px]" 
+                        onChange={(event) => handleChange(event)}></textarea>
+                    </InputContainer>
                 </div>
-                <div className="flex flex-col min-w-[200px]">
-
-                    <label>Image</label>
-                    <input className="" type="file"
+                <InputContainer label="Image">
+                    <input name="image" type="file" className=""
                     onChange={(event) => handleChange(event)}></input>
-
-                </div>
+                </InputContainer>
             </div>
 
             <div className="flex gap-5">
-                <div className="flex flex-col gap-1">
-
-                    <label>Type</label>
-                    <select className="border-1 border-black/30 p-1"
-                    onChange={(event) => handleChange(event)}>
-                        <option>NUMBER</option>
-                        <option>STRING</option>
-                    </select>
-
-                </div>
-
-                <div className="flex flex-col gap-1">
-                    <label>List</label>
-                    <button className="border-1 border-black/30 p-1">Open List</button>
-                </div>
-
-                <div className="flex flex-col gap-1">
-                    <label>Validation</label>
-                    <select className="border-1 border-black/30 p-1"
-                    onChange={(event) => handleChange(event)}>
-                        <option>INTEGER</option>
-                        <option>FLOAT</option>
-                    </select>
-                </div>
+                <SelectContainer label="Type" options={types} 
+                onChange={(event) => handleChange(event)}></SelectContainer>
+                <ListContainer></ListContainer>
+                <SelectContainer label="Validation" options={validations}
+                onChange={(event) => handleChange(event)}
+                ></SelectContainer>
             </div>
-
 
             <div className="flex gap-10 justify-end">
                 <button onClick={closeHandler}>Cancel</button>

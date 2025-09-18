@@ -1,4 +1,4 @@
-import {algorithms} from '../algorithms/algorithms'
+import {algorithms} from '../constants/generator.constants.js'
 
 export function Output({genState, genHandler}){
     return (
@@ -58,7 +58,7 @@ export function AlgorithmConfig({algorithmHandler, algorithmList=algorithms}){
                                 onChange={algorithmHandler}
                                 >
                             {algorithmList.map(
-                                (algorithm) => (<option value={algorithm.type}>{algorithm.name}</option>)  
+                                (algorithm) => (<option value={algorithm.value}>{algorithm.name}</option>)  
                             )}
                         </select>
                     </span>
