@@ -1,7 +1,6 @@
 import './css/index.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import {Routes, Route} from 'react-router-dom';
+import {Header, Footer} from './components/Layout.jsx'
 import Home from './pages/Home';
 import About from './pages/About';
 import Generators from './pages/Generators';

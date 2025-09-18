@@ -1,6 +1,6 @@
 import NumbersGenerator from "../../pages/GeneratorTypes/NumbersGenerator";
 import StringsGenerator from "../../pages/GeneratorTypes/StringsGenerator";
-import NavCrumbs from "../NavCrumbs";
+import {NavCrumbs} from "../Layout.jsx";
 
 
 export default function PreviewGeneratorPopup({generator}){

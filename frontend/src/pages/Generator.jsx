@@ -1,4 +1,4 @@
-import NavCrumbs from '../components/NavCrumbs'
+import {NavCrumbs} from '../components/Layout.jsx'
 import '../css/index.css'
 import {useState, useEffect} from 'react';
 
