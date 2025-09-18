@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Output, Config } from "../../components/GeneratorComponents";
+import { useDefaults } from "../../hooks/GeneratorHooks";
 
 export default function NumbersGenerator({generator}) {
 
     const [minState, setMinState] = useState(1);
     const [maxState, setMaxState] = useState(100);
     const [genState, setGenState] = useState('0');
-    const [amtState, setAmtState] = useState(1);
-    const [algorithmState, setAlgorithmState] = useState("default");
+
+    const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
+
     const minAsNumber = Number(minState);
     const maxAsNumber = Number(maxState);
     
@@ -26,44 +28,24 @@ export default function NumbersGenerator({generator}) {
         setMaxState(value);
     }
 
-    const amtHandler = (event) => {
-        let amount = event.target.value;
-        setAmtState(amount);
-    }
-    const algorithmHandler = (event) => {
-        let option = event.target.value;
-        setAlgorithmState(option);
-    }
-    function genHandler(){
-        if (amtState == 1){
+    const genHandler = () => {
+        let newGenState = ``
+        for (let i = 0; i < amountState; i++){
             if (algorithmState === "default"){
                 if (generator.validation !== "FLOAT"){
-                    setGenState(Math.floor(Math.random() * (maxState - minState + 1) + minState));
+                    newGenState += `${(Math.floor(Math.random() * (maxState - minState + 1) + minState))} `;
                 }
                 else {
-                    setGenState(Math.random() * (maxState - minState + 1) + minState);
+                    newGenState += `${(Math.random() * (maxState - minState + 1) + minState)} `;
                 }
             }
         }
-        else {
-            let newGenState = ``
-            for (let i = 0; i < amtState; i++){
-                if (algorithmState === "default"){
-                    if (generator.validation !== "FLOAT"){
-                        newGenState += `${(Math.floor(Math.random() * (maxState - minState + 1) + minState))} `;
-                    }
-                    else {
-                        newGenState += `${(Math.random() * (maxState - minState + 1) + minState)} `;
-                    }
-                }
-            }
-            setGenState(newGenState)
-        }
+        setGenState(newGenState)
     }
 
     return (
         <div className="flex gap-5 p-5 h-[450px] border-1 border-black/15 rounded-[5px] shadow-md">
-            <Config algorithmHandler={algorithmHandler} amountHandler={amtHandler}>
+            <Config algorithmHandler={algorithmHandler} amountHandler={amountHandler}>
                 <h4 className="mb-5 flex">
                     <div className="flex-grow">
                         Min: 
