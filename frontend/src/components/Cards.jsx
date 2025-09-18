@@ -1,6 +1,6 @@
-import '../../css/index.css';
+import '../css/index.css';
 import { Link } from 'react-router-dom';
-import defaultImg from '../../assets/defaultImg.svg'
+import defaultImg from '../assets/defaultImg.svg'
 
 export default function Card({children}){
     return(

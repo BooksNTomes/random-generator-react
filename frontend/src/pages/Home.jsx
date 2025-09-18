@@ -2,7 +2,7 @@ import logo from '../assets/frame.svg';
 import first from '../assets/first.svg';
 import second from '../assets/second.svg';
 import third from '../assets/third.svg';
-import Card from '../components/Cards/Card.jsx';
+import {ImageCard} from '../components/Cards.jsx';
 
 function Home() {
     return (
@@ -22,17 +22,17 @@ function Home() {
                 </div>
             </div>
             <div className="flex gap-4 items-center justify-evenly">
-                <Card 
+                <ImageCard 
                 image={first}
                 name={"Lists of Objects"} 
                 description={"Random number generators are mainly numbers, but numbers are ultimately a list of items to choose from."}/>
                     
-                <Card 
+                <ImageCard 
                 image={second}
                 name={"Algorithms"} 
                 description={"Random number generators are powered by mathematical algorithms, mostly not truly random."}/>
 
-                <Card
+                <ImageCard
                 image={third}
                 name={"Probabilities"} 
                 description={"Each item usually have equal odds of being chosen, but probabilities can make some items more likely than others."}/>

@@ -1,13 +1,10 @@
 /* eslint-disable no-unused-vars */
-import GeneratorCard from '../components/Cards/GeneratorCard.jsx';
-import {NavCrumbs} from '../components/Layout.jsx';
 import '../css/index.css';
-import {useState, useEffect} from 'react';
-
-import first from '../assets/first.svg';
-import second from '../assets/second.svg';
-import { retrieveGenerators } from '../api/generators.api.js';
+import { useState, useEffect } from 'react';
+import { NavCrumbs } from '../components/Layout.jsx';
+import { GeneratorCard, GeneratorLoadingCard } from '../components/Cards.jsx';
 import { staticGenerators } from '../api/falsedb.api.js';
+import { retrieveGenerators } from '../api/generators.api.js';
 
 function Generators(){
     const [generators, setGenerators] = useState([]);

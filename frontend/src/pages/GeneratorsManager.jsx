@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
-import {NavCrumbs} from '../components/Layout.jsx';
 import '../css/index.css';
-import {useState, useEffect, useRef} from 'react';
+import { NavCrumbs } from '../components/Layout.jsx';
+import { useState, useEffect, useRef } from 'react';
 import { retrieveGenerators } from '../api/generators.api.js';
 import { staticGenerators } from '../api/falsedb.api.js';
 
-// TODO: Place all popup components in one Popup Component Perhaps?
-import GeneratorManagerCard from '../components/Cards/GeneratorManagerCard.jsx';
-import GeneratorLoadingCard from '../components/Cards/GeneratorLoadingCard.jsx';
-import GeneratorCreateCard from '../components/Cards/GeneratorCreateCard.jsx';
+import {GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard} from '../components/Cards.jsx';
+
 import CreateGeneratorPopup from '../components/Popups/CreateGeneratorPopup.jsx';
 import DeleteGeneratorPopup from '../components/Popups/DeleteGeneratorPopup.jsx';
 import UpdateGeneratorPopup from '../components/Popups/UpdateGeneratorPopup.jsx';

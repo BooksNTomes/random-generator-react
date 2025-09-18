@@ -33,7 +33,7 @@ export function Footer(){
     )
 };
 
-export function NavCrumbsRefactored({navTarget}){
+export function NavCrumbs({navTarget}){
     return(
         <div className='browser-size m-auto pt-5 mb-5'>
             {navTarget === '' ? 
