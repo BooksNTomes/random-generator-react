@@ -11,6 +11,7 @@ import CreateGeneratorPopup from '../components/Popups/CreateGeneratorPopup.jsx'
 import DeleteGeneratorPopup from '../components/Popups/DeleteGeneratorPopup.jsx';
 import UpdateGeneratorPopup from '../components/Popups/UpdateGeneratorPopup.jsx';
 
+// TODO : Refactor Popup Implementation
 function GeneratorsManager(){
     const [generators, setGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);

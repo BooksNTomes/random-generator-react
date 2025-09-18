@@ -1,9 +1,24 @@
-
+import '../css/index.css'
 import { useRef, useState } from "react"
 import { CreateForm } from "./Forms"
 
-export default function Popup({closeHandler, actionHandler}) {
-
+export default function Popup({children}) {
+    return (
+        <>
+            <div>
+                <div className="overlay"
+                onClick={() => console.log("Overlay")}
+                ></div>
+                <div className="z-20 absolute border-black border-1 
+                                top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                                bg-white p-5"
+                onClick={() => console.log("Window")}
+                >
+                    {children}
+                </div>
+            </div>
+        </>
+    )
 }
 
 export function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
@@ -17,15 +32,18 @@ export function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
 }
 
 export function DeleteGeneratorPopup({closeHandler}){
-
     return(
-        <div className="w-[400px] h-[100px]">
-            <h3>Delete Generator?</h3>
-            <div className="flex gap-10 justify-end">
-                <button>Yes</button>
-                <button onClick={closeHandler}>No</button>
-            </div>
-        </div>
+        <>
+            <Popup>
+                <div className="w-[400px] h-[100px]">
+                    <h3>Delete Generator?</h3>
+                    <div className="flex gap-10 justify-end">
+                        <button>Yes</button>
+                        <button onClick={closeHandler}>No</button>
+                    </div>
+                </div>
+            </Popup>
+        </>
     )
 }
 

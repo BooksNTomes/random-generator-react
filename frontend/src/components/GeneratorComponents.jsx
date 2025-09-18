@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {algorithms} from '../constants/generator.constants.js'
 
 export function Output({genState, genHandler}){
@@ -17,7 +18,12 @@ export function Output({genState, genHandler}){
     )
 }
 
-export function Config({generator, algorithmHandler, amountHandler, listChildren}){
+export function Config({children, algorithmHandler, amountHandler, generator}){
+
+    // useEffect(() => {
+    //     console.log(children)
+    // },[])
+
     return(
         <>
             <div className="w-1/2">
@@ -29,8 +35,8 @@ export function Config({generator, algorithmHandler, amountHandler, listChildren
                     <AmountConfig
                         amountHandler={amountHandler}
                     ></AmountConfig>
-                    <ListConfig>
-                        {listChildren} {/** Insert Children Elements Based on Generator Type Here */}
+                    <ListConfig listChildren={children}>
+                         {/** Insert Children Elements Based on Generator Type Here */}
                     </ListConfig>
                 </div>
             </div>
@@ -58,7 +64,7 @@ export function AlgorithmConfig({algorithmHandler, algorithmList=algorithms}){
                                 onChange={algorithmHandler}
                                 >
                             {algorithmList.map(
-                                (algorithm) => (<option value={algorithm.value}>{algorithm.name}</option>)  
+                                (algorithm, index) => (<option key={index} value={algorithm.value}>{algorithm.name}</option>)  
                             )}
                         </select>
                     </span>
@@ -69,6 +75,10 @@ export function AlgorithmConfig({algorithmHandler, algorithmList=algorithms}){
 }
 
 export function ListConfig({listChildren, message="this generator does not allow direct modification"}){
+    useEffect(() => {
+        console.log(listChildren)
+    },[])
+
     return(
         <>
             <h4 className="mb-5 embolden flex">
@@ -89,7 +99,7 @@ export function ListConfig({listChildren, message="this generator does not allow
 export function AmountConfig({amountHandler, amount=1}){
     return (
         <>
-            <h4 className="mb-5 flex">
+            <h4 className="ml-5 mb-5 flex">
                 <div className="flex-grow">
                     Amount: 
                 </div>

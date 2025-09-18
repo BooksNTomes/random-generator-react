@@ -68,3 +68,15 @@ h3 {
 li {
     list-style-type: none;
 }
+
+/* Overlay */
+.overlay{
+    position: absolute;
+    z-index:15;
+    width:100dvw;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.10);
+}
