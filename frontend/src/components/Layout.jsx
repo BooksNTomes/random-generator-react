@@ -37,8 +37,8 @@ export function NavCrumbs({navTarget}){
     return(
         <div className='browser-size m-auto pt-5 mb-5'>
             {navTarget === '' ? 
-            <h3>Generators</h3> :
-            <h3>Generators &gt; {navTarget}</h3>}
+            (<h3>Generators</h3>) :
+            (<h3>Generators &gt; {navTarget}</h3>)}
         </div>
     )
 }

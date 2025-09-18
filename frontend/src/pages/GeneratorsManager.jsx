@@ -79,7 +79,7 @@ function GeneratorsManager(){
 
     return(
         <div className='browser-size m-auto'>
-            <NavCrumbs navtarget={''}></NavCrumbs>
+            <NavCrumbs navTarget={''}></NavCrumbs>
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
 
             <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={createRef}>
