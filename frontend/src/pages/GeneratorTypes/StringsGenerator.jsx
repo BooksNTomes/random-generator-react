@@ -21,8 +21,6 @@ export default function StringsGenerator({generator}) {
         }
         setListState(newList);
     }
-
-
     const amtHandler = (event) => {
         let amount = event.target.value;
         setAmtState(amount);

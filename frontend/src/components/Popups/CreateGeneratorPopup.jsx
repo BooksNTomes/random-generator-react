@@ -47,7 +47,7 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
             {showPreview && preview}
 
             <h3>Generators &gt; Create</h3>
-             <div className="flex gap-5">
+            <div className="flex gap-5">
                 <div className="flex flex-col">
                     <label>Name</label>
                     <input className="border-1 border-black min-w-[400px] " type="text" 

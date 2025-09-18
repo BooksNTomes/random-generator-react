@@ -1,7 +1,7 @@
 import {useState, useRef, useEffect} from 'react';
 
 // Generators
-export function CreateForm() {
+export function CreateForm({closeHandler, createGeneratorHandler}) {
     const [generator, setGenerator] = useState({});
     const [listState, setListState] = useState([]);
 
