@@ -7,7 +7,6 @@ export default function NumbersGenerator({generator}) {
     const [minState, setMinState] = useState(1);
     const [maxState, setMaxState] = useState(100);
     const [genState, setGenState] = useState('0');
-
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
 
     const minAsNumber = Number(minState);

@@ -75,9 +75,9 @@ export function AlgorithmConfig({algorithmHandler, algorithmList=algorithms}){
 }
 
 export function ListConfig({listChildren, message="this generator does not allow direct modification"}){
-    useEffect(() => {
-        console.log(listChildren)
-    },[])
+    // useEffect(() => {
+    //     console.log(listChildren)
+    // },[])
 
     return(
         <>

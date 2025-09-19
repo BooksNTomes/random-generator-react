@@ -135,6 +135,23 @@ export function DeleteForm({closeHandler, deleteHandler}) {
     )
 }
 
+// Generator Types
+export function ListForm({initialList, itemsList, itemToggle}){
+
+    return (
+        <>
+            {initialList.map((entry, index) => (
+            <span key={index}>
+                <input type="checkbox" 
+                onChange={ (event) => itemToggle(event, index) } 
+                name={entry} 
+                defaultChecked={itemsList[index] !== '' ? true : false}/>
+                <label htmlFor={entry}>{entry}</label>
+            </span>))}
+        </>
+    )
+}
+
 // Auth Prototypes
 export function loginForm({handler}) {
     const [name, setName] = useState();

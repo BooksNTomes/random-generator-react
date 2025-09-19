@@ -1,17 +1,28 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { Config, Output } from "../../components/GeneratorComponents";
-import ListPopup from "../../components/Popups/ListPopup";
+import { ListForm } from "../../components/Forms";
+import Popup from "../../components/Popups";
+import { useDefaults } from "../../hooks/GeneratorHooks";
 
 // TODO: Refactor Popup Implementation
 
 export default function StringsGenerator({generator}) {
-    const [algorithmState, setAlgorithmState] = useState("default");
-    const [amtState, setAmtState] = useState(1);
-    const [genState, setGenState] = useState('');
-    const [listState, setListState] = useState(generator.list);
+    // const [algorithmState, setAlgorithmState] = useState("default");
+    // const [amtState, setAmtState] = useState(1);
+    // const amtHandler = (event) => {
+    //     let amount = event.target.value;
+    //     setAmtState(amount);
+    // }
+    // const algorithmHandler = (event) => {
+    //     let option = event.target.value;
+    //     setAlgorithmState(option);
+    // }
 
-    const listDialogRef = useRef(null);
+    const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
+    const [listState, setListState] = useState(generator.list);
+    const [activePopup, setActivePopup] = useState(false);
+    const [genState, setGenState] = useState('');
     const initialList = generator.list;
 
     const listHandler = (event, index) => {
@@ -24,27 +35,20 @@ export default function StringsGenerator({generator}) {
         }
         setListState(newList);
     }
-    const amtHandler = (event) => {
-        let amount = event.target.value;
-        setAmtState(amount);
-    }
-    const algorithmHandler = (event) => {
-        let option = event.target.value;
-        setAlgorithmState(option);
-    }
+
     const genHandler = () => {
         if (listState.length < 1){
             setGenState("Empty List");
         }
         else{
             let newGenState = ``
-            for (let i = 0; i < amtState; i++){
+            for (let i = 0; i < amountState; i++){
                 if (algorithmState === "default"){
                     let stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) - 1)];
                     while (stateCandidate === '' || stateCandidate === undefined) {
                         stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
                     }
-                    newGenState += (stateCandidate) + (i+1 < amtState ? ', ' : ' ');
+                    newGenState += (stateCandidate) + (i+1 < amountState ? ', ' : ' ');
                 }
             }
             setGenState(newGenState);
@@ -53,20 +57,17 @@ export default function StringsGenerator({generator}) {
     
     return (
         <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md">
-            <dialog ref={listDialogRef} className="w-[300px] h-[300px] p-[30px] m-auto">
-                {initialList && initialList.map((entry, index) => (
-                    <div key={index}>
-                        <span>
-                            <input type="checkbox" onChange={event => listHandler(event, index)} name={entry} defaultChecked={listState[index] 
-                            !== '' ? true : false}/>
-                            <label htmlFor={entry}>{entry}</label>
-                        </span>
-                    </div>
-                ))}
-                <button className="mt-[10px] border-1 border-black rounded p-[10px]" onClick={() => listDialogRef.current?.close()}>Close</button>
-            </dialog>
+            <Popup closeHandler={() => setActivePopup(false) }
+            active={activePopup}
+            >
+                <ListForm
+                initialList={initialList}
+                itemsList={listState}
+                itemToggle={listHandler}>
+                </ListForm>
+            </Popup>
 
-            <Config algorithmHandler={algorithmHandler} amountHandler={amtHandler}>
+            <Config algorithmHandler={algorithmHandler} amountHandler={amountHandler}>
                 <h4 className="mb-5 flex">
                     <div className="flex-grow">
                         List: 
@@ -74,12 +75,28 @@ export default function StringsGenerator({generator}) {
                     <div>
                         <button className="p-1 rounded border-1 border-black/10 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]
                         w-[245px]" 
-                        onClick={() => {listDialogRef.current?.showModal()}}>Open List</button>
+                        onClick={() => {
+                            setActivePopup(true)
+                            }}>Open List</button>
                     </div>
                 </h4>
             </Config>
-
             <Output genState={genState} genHandler={genHandler}></Output>
         </div>
     )
 }
+
+// onClick={() => {listDialogRef.current?.showModal()}}
+// const listDialogRef = useRef(null);
+// <dialog ref={listDialogRef} className="w-[300px] h-[300px] p-[30px] m-auto">
+//     {initialList && initialList.map((entry, index) => (
+//         <div key={index}>
+//             <span>
+//                 <input type="checkbox" onChange={event => listHandler(event, index)} name={entry} defaultChecked={listState[index] 
+//                 !== '' ? true : false}/>
+//                 <label htmlFor={entry}>{entry}</label>
+//             </span>
+//         </div>
+//     ))}
+//     <button className="mt-[10px] border-1 border-black rounded p-[10px]" onClick={() => listDialogRef.current?.close()}>Close</button>
+// </dialog>

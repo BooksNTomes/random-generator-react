@@ -2,21 +2,43 @@ import '../css/index.css'
 import { useRef, useState } from "react"
 import { CreateForm } from "./Forms"
 
-export default function Popup({children}) {
+export default function Popup({children, closeHandler, active}) {
     return (
         <>
-            <div>
-                <div className="overlay"
-                onClick={() => console.log("Overlay")}
-                ></div>
-                <div className="z-20 absolute border-black border-1 
-                                top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                                bg-white p-5"
-                onClick={() => console.log("Window")}
-                >
-                    {children}
+            {active ? (
+                <div>
+                    <div className="overlay"
+                    onClick={() => console.log("Overlay")}
+                    ></div>
+
+                    <div className="z-20 absolute border-black border-1 
+                                    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                                    bg-white p-5"
+                    >{children}
+
+                        <button className="mt-[10px] border-1 border-black rounded p-[10px]"
+                        onClick={() => closeHandler()}
+                        >Close</button>
+                    </div>
                 </div>
-            </div>
+                ) :
+                (
+                  <div></div>  
+                )}
+        </>
+    )
+}
+
+export function ListPopup({initialList, itemsList, itemToggle}){
+
+    return (
+        <>
+            {initialList.map((entry, index) => (
+            <span key={index}>
+                <input type="checkbox" onChange={event => itemToggle(event, index)} name={entry} defaultChecked={itemsList[index] 
+                !== '' ? true : false}/>
+                <label htmlFor={entry}>{entry}</label>
+            </span>))}
         </>
     )
 }
@@ -53,20 +75,6 @@ export function PreviewGeneratorPopup(){
     <>
 
     </>
-    )
-}
-
-export function ListPopup({itemsList, itemToggle}){
-
-    return (
-        <>
-            {itemsList.map((entry, index) => (
-                <span key={index}>
-                    <input type="checkbox" onChange={event => itemToggle(event, index)} name={entry} defaultChecked={listState[index] 
-                    !== '' ? true : false}/>
-                    <label htmlFor={entry}>{entry}</label>
-                </span>))}
-        </>
     )
 }
 
