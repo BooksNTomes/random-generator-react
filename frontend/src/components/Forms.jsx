@@ -153,14 +153,19 @@ export function ListForm({initialList, itemsList, itemToggle}){
 }
 
 export function ListCreate({currentList, saveHandler, closeHandler}){
-    const [newList, setNewList] = useState({...currentList});
-    const newElement = "New Element"
+    const [newList, setNewList] = useState( (currentList !== null && currentList !== undefined) ?
+        [...currentList] : []
+    );
+    const [editedElement, setEditedElement] = useState();
+    const newElement = "New Element";
 
     const addHandler = () => {
         setNewList([...newList, newElement]);
     }
-    const editHandler = () => {
-
+    const editHandler = (editedElement, index) => {
+        const editedList = [...newList];
+        editedList[index] = editedElement;
+        setNewList([...editedList]);
     }
 
     return(
@@ -168,15 +173,17 @@ export function ListCreate({currentList, saveHandler, closeHandler}){
             <ol>
                 {newList.map((element, index) => (
                     <li key={index} className="flex justify-between">
-                    {element}
-                    <button>Edit</button>
+                        <input type="text" defaultValue={element} onChange={(event) => setEditedElement(event.target.value)}></input>
+                        <button onClick={(event) => editHandler(editedElement, index)}>Edit</button>
                     </li>
                 ))}
             </ol>
             <div>
+                <button onClick={() => addHandler()}>+</button>
+            </div>
+            <div>
                 <button onClick = {() => closeHandler()}>Cancel</button>
-                <button onClick = {() => saveHandler()}>Save</button>
-                <button>+</button>
+                <button onClick = {() => {saveHandler(newList); closeHandler()}}>Save</button>
             </div>
         </>
     )

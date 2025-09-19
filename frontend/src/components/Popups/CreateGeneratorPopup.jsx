@@ -1,9 +1,12 @@
 import { useRef, useState } from "react"
 import PreviewGeneratorPopup from "./PreviewGeneratorPopup";
+import { ListCreate } from "../Forms";
+import Popup, { BlankPopup } from "../Popups";
 
 export default function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
     const [generator, setGenerator] = useState({});
     const [showPreview, setShowPreview] = useState(false);
+    const [activePopup, setActivePopup] = useState(false);
     const [preview, setPreview] = useState();
 
     const nameRef = useRef();
@@ -12,17 +15,26 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
     const typeRef = useRef();
     const listRef = useRef();
     const validationRef = useRef();
-    
+
     const handleChange = () => {
         const newGenerator = {
             name: nameRef.current?.value,
             description: descriptionRef.current?.value,
             image: '',
             type: typeRef.current?.value,
-            list: [],
+            list: generator.list !== null ? generator.list : [],
             validation: validationRef.current?.value
         }
         setGenerator(newGenerator);
+    }
+
+    const handleListChange = (newList) =>{
+        const newGenerator = {...generator};
+        console.log(newList);
+        newGenerator.list = [...newList];
+        setGenerator({...generator,
+            list: newGenerator.list
+        })
     }
 
     const handlePreview = () => {
@@ -45,6 +57,16 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
         <div className="flex flex-col gap-10">
 
             {showPreview && preview}
+
+            <BlankPopup
+                active={activePopup}>
+                <ListCreate
+                currentList={generator.list}
+                closeHandler={() => setActivePopup(false)}
+                saveHandler={handleListChange}
+                >
+                </ListCreate>
+            </BlankPopup>
 
             <h3>Generators &gt; Create</h3>
             <div className="flex gap-5">
@@ -73,7 +95,7 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
                 </div>
                 <div className="flex flex-col gap-1">
                     <label>List</label>
-                    <button className="border-1 border-black/30 p-1">Open List</button>
+                    <button onClick={() => setActivePopup(true)} className="border-1 border-black/30 p-1">Open List</button>
                 </div>
                 <div className="flex flex-col gap-1">
                     <label>Validation</label>

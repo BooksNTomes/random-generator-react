@@ -30,6 +30,28 @@ export default function Popup({children, closeHandler, active}) {
     )
 }
 
+export function BlankPopup({children, active}) {
+    return (
+        <>
+            {active ? (
+                <div>
+                    <div className="overlay"
+                    onClick={() => console.log("Overlay")}
+                    ></div>
+
+                    <div className="z-20 absolute border-black border-1 
+                                    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                                    bg-white p-5"
+                    >{children}
+                    </div>
+                </div>
+                ) :
+                (
+                  <div></div>  
+                )}
+        </>
+    )
+}
 
 
 export function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
