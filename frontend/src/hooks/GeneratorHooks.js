@@ -17,28 +17,30 @@ export const useDefaults = () => {
     return {amountState, amountHandler, algorithmState, algorithmHandler}
 }
 
-// export const numbersHandler = () => {
-//     const [minState, setMinState] = useState(1);
-//     const [maxState, setMaxState] = useState(100);
-//     const [genState, setGenState] = useState('0');
+export const useNumbers = (validation) => {
+    const [minState, setMinState] = useState(1);
+    const [maxState, setMaxState] = useState(100);
 
-//     const genHandler = () => {
-//         let newGenState = ``
-//         for (let i = 0; i < amountState; i++){
-//             if (algorithmState === "default"){
-//                 if (generator.validation !== "FLOAT"){
-//                     newGenState += `${(Math.floor(Math.random() * (maxState - minState + 1) + minState))} `;
-//                 }
-//                 else {
-//                     newGenState += `${(Math.random() * (maxState - minState + 1) + minState)} `;
-//                 }
-//             }
-//         }
-//         setGenState(newGenState)
-//     }
+    const minAsNumber = Number(minState);
+    const maxAsNumber = Number(maxState);
+    
+    const minHandler = (event) => {
+        let value = event.target.value;
+        if (validation !== "FLOAT"){
+            value = Math.floor(value);
+        }
+        setMinState(value);
+    }
+    const maxHandler = (event) => {
+        let value = event.target.value;
+        if (validation !== "FLOAT"){
+            value = Math.floor(value);
+        }
+        setMaxState(value);
+    }
 
-//     return {genState, setGenState, genHandler};
-// }
+    return {minState, maxState, minHandler, maxHandler, minAsNumber, maxAsNumber};
+}
 
 // export const stringsHandler = () => {
 //     const [genState, setGenState] = useState('');

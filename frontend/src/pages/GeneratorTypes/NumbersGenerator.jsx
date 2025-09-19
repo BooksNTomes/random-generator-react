@@ -1,31 +1,12 @@
 import { useState } from "react";
 import { Output, Config } from "../../components/GeneratorComponents";
-import { useDefaults } from "../../hooks/GeneratorHooks";
+import { useDefaults, useNumbers } from "../../hooks/GeneratorHooks";
 
 export default function NumbersGenerator({generator}) {
 
-    const [minState, setMinState] = useState(1);
-    const [maxState, setMaxState] = useState(100);
-    const [genState, setGenState] = useState('0');
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
-
-    const minAsNumber = Number(minState);
-    const maxAsNumber = Number(maxState);
-    
-    const minHandler = (event) => {
-        let value = event.target.value;
-        if (generator.validation !== "FLOAT"){
-            value = Math.floor(value);
-        }
-        setMinState(value);
-    }
-    const maxHandler = (event) => {
-        let value = event.target.value;
-        if (generator.validation !== "FLOAT"){
-            value = Math.floor(value);
-        }
-        setMaxState(value);
-    }
+    const {minState, maxState, minHandler, maxHandler, minAsNumber, maxAsNumber} = useNumbers(generator.validation);
+    const [genState, setGenState] = useState('0');
 
     const genHandler = () => {
         let newGenState = ``

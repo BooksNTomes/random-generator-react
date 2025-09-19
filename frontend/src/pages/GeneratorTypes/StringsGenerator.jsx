@@ -8,23 +8,12 @@ import { useDefaults } from "../../hooks/GeneratorHooks";
 // TODO: Refactor Popup Implementation
 
 export default function StringsGenerator({generator}) {
-    // const [algorithmState, setAlgorithmState] = useState("default");
-    // const [amtState, setAmtState] = useState(1);
-    // const amtHandler = (event) => {
-    //     let amount = event.target.value;
-    //     setAmtState(amount);
-    // }
-    // const algorithmHandler = (event) => {
-    //     let option = event.target.value;
-    //     setAlgorithmState(option);
-    // }
-
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
-    const [listState, setListState] = useState(generator.list);
     const [activePopup, setActivePopup] = useState(false);
     const [genState, setGenState] = useState('');
+    
     const initialList = generator.list;
-
+    const [listState, setListState] = useState(generator.list);
     const listHandler = (event, index) => {
         let newList = listState.slice();
         if (!event.target.checked){
@@ -85,18 +74,3 @@ export default function StringsGenerator({generator}) {
         </div>
     )
 }
-
-// onClick={() => {listDialogRef.current?.showModal()}}
-// const listDialogRef = useRef(null);
-// <dialog ref={listDialogRef} className="w-[300px] h-[300px] p-[30px] m-auto">
-//     {initialList && initialList.map((entry, index) => (
-//         <div key={index}>
-//             <span>
-//                 <input type="checkbox" onChange={event => listHandler(event, index)} name={entry} defaultChecked={listState[index] 
-//                 !== '' ? true : false}/>
-//                 <label htmlFor={entry}>{entry}</label>
-//             </span>
-//         </div>
-//     ))}
-//     <button className="mt-[10px] border-1 border-black rounded p-[10px]" onClick={() => listDialogRef.current?.close()}>Close</button>
-// </dialog>

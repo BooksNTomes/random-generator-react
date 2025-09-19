@@ -152,6 +152,10 @@ export function ListForm({initialList, itemsList, itemToggle}){
     )
 }
 
+export function ListCreate(){
+
+}
+
 // Auth Prototypes
 export function loginForm({handler}) {
     const [name, setName] = useState();
