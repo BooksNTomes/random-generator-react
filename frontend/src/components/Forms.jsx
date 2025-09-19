@@ -1,11 +1,13 @@
 import {useState, useRef, useEffect} from 'react';
 import { types, validations } from '../constants/generator.constants';
 import { InputContainer, ListContainer, SelectContainer } from './FormComponents';
+import { BlankPopup, PreviewGeneratorPopup } from './Popups';
 
 // Generators
 export function CreateForm({closeHandler, previewHandler, createGeneratorHandler}) {
     const [generator, setGenerator] = useState({});
-    const [listState, setListState] = useState([]);
+    const [activePopup, setActivePopup] = useState(false);
+    const [activePreview, setActivePreview] = useState(false);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -15,10 +17,32 @@ export function CreateForm({closeHandler, previewHandler, createGeneratorHandler
         });
     };
 
-    const listHandler = () => {}
+    const listHandler = (newList) => {
+        setGenerator({...generator,
+            list: newList
+        })
+    }
 
     return(
         <div className="flex flex-col gap-10">
+
+            <BlankPopup
+                active={activePopup}>
+                <ListCreate
+                currentList={generator.list}
+                closeHandler={() => setActivePopup(false)}
+                saveHandler={listHandler}
+                >
+                </ListCreate>
+            </BlankPopup>
+
+            <PreviewGeneratorPopup
+                active={activePreview}
+                closeHandler={() => setActivePreview(false)}
+                generator={generator}
+                >
+            </PreviewGeneratorPopup>
+
             <h3>Generators &gt; Create</h3>
             <div className="flex gap-5">
                 <div className="flex flex-col">
@@ -41,7 +65,7 @@ export function CreateForm({closeHandler, previewHandler, createGeneratorHandler
             <div className="flex gap-5">
                 <SelectContainer label="Type" options={types} 
                 onChange={(event) => handleChange(event)}></SelectContainer>
-                <ListContainer handler={() => listHandler()}></ListContainer>
+                <ListContainer handler={() => setActivePopup(true)}></ListContainer>
                 <SelectContainer label="Validation" options={validations}
                 onChange={(event) => handleChange(event)}
                 ></SelectContainer>
@@ -49,7 +73,7 @@ export function CreateForm({closeHandler, previewHandler, createGeneratorHandler
 
             <div className="flex gap-10 justify-end">
                 <button onClick={() => closeHandler()}>Cancel</button>
-                <button oClick={() => previewHandler()}>Preview</button>
+                <button oClick={() => setActivePreview(true)}>Preview</button>
                 <button onClick={() => createGeneratorHandler(generator)}>Create</button>
             </div>
         </div>
@@ -58,7 +82,8 @@ export function CreateForm({closeHandler, previewHandler, createGeneratorHandler
 
 export function UpdateForm({generator, closeHandler, previewHandler, updateHandler}) {
     const [newGenerator, setNewGenerator] = useState({...generator});
-    const [listState, setListState] = useState(generator.list.slice());
+    const [activePopup, setActivePopup] = useState(false);
+    const [activePreview, setActivePreview] = useState(false);
 
     const handleChange = (event) => {
         const {name, value} = event.target;
@@ -68,7 +93,11 @@ export function UpdateForm({generator, closeHandler, previewHandler, updateHandl
         });
     };
 
-    const listHandler = () => {}
+    const listHandler = (newList) => {
+        setNewGenerator({...generator,
+            list: newList
+        })
+    }
 
     return(
         <div className="flex flex-col gap-10">
@@ -165,6 +194,11 @@ export function ListCreate({currentList, saveHandler, closeHandler}){
     const editHandler = (editedElement, index) => {
         const editedList = [...newList];
         editedList[index] = editedElement;
+        setNewList([...editedList]);
+    }
+    const deleteHandler = (index) => {
+        const editedList = [...newList];
+        editedList.splice(index, 1);
         setNewList([...editedList]);
     }
 

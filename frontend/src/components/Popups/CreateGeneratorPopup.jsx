@@ -29,11 +29,8 @@ export default function CreateGeneratorPopup({closeHandler, createGeneratorHandl
     }
 
     const handleListChange = (newList) =>{
-        const newGenerator = {...generator};
-        console.log(newList);
-        newGenerator.list = [...newList];
         setGenerator({...generator,
-            list: newGenerator.list
+            list: newList
         })
     }
 
