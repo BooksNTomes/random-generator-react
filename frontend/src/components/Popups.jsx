@@ -2,6 +2,7 @@ import '../css/index.css'
 import { useRef, useState } from "react"
 import { CreateForm } from "./Forms"
 
+// TODO Layouting
 export default function Popup({children, closeHandler, active}) {
     return (
         <>
@@ -29,26 +30,16 @@ export default function Popup({children, closeHandler, active}) {
     )
 }
 
-export function ListPopup({initialList, itemsList, itemToggle}){
 
-    return (
-        <>
-            {initialList.map((entry, index) => (
-            <span key={index}>
-                <input type="checkbox" onChange={event => itemToggle(event, index)} name={entry} defaultChecked={itemsList[index] 
-                !== '' ? true : false}/>
-                <label htmlFor={entry}>{entry}</label>
-            </span>))}
-        </>
-    )
-}
 
 export function CreateGeneratorPopup({closeHandler, createGeneratorHandler}) {
     return(
         <>
-            <CreateForm closeHandler={closeHandler} 
-            createGeneratorHandler={createGeneratorHandler}>
-            </CreateForm>
+            <Popup>
+                <CreateForm closeHandler={closeHandler} 
+                createGeneratorHandler={createGeneratorHandler}>
+                </CreateForm>
+            </Popup>
         </>
     )
 }

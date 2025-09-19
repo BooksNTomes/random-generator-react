@@ -5,15 +5,14 @@ import { ListForm } from "../../components/Forms";
 import Popup from "../../components/Popups";
 import { useDefaults } from "../../hooks/GeneratorHooks";
 
-// TODO: Refactor Popup Implementation
-
 export default function StringsGenerator({generator}) {
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
-    const [activePopup, setActivePopup] = useState(false);
     const [genState, setGenState] = useState('');
+    const [activePopup, setActivePopup] = useState(false);
+    const [listState, setListState] = useState(generator.list);
     
     const initialList = generator.list;
-    const [listState, setListState] = useState(generator.list);
+    
     const listHandler = (event, index) => {
         let newList = listState.slice();
         if (!event.target.checked){

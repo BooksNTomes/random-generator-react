@@ -152,12 +152,38 @@ export function ListForm({initialList, itemsList, itemToggle}){
     )
 }
 
-export function ListCreate(){
+export function ListCreate({currentList, saveHandler, closeHandler}){
+    const [newList, setNewList] = useState({...currentList});
+    const newElement = "New Element"
 
+    const addHandler = () => {
+        setNewList([...newList, newElement]);
+    }
+    const editHandler = () => {
+
+    }
+
+    return(
+        <>
+            <ol>
+                {newList.map((element, index) => (
+                    <li key={index} className="flex justify-between">
+                    {element}
+                    <button>Edit</button>
+                    </li>
+                ))}
+            </ol>
+            <div>
+                <button onClick = {() => closeHandler()}>Cancel</button>
+                <button onClick = {() => saveHandler()}>Save</button>
+                <button>+</button>
+            </div>
+        </>
+    )
 }
 
 // Auth Prototypes
-export function loginForm({handler}) {
+export function loginForm() {
     const [name, setName] = useState();
     const [password, setPassword] = useState();
 
