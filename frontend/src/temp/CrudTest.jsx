@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard } from '../components/Cards.jsx';
 import { retrieveGenerators } from '../api/generators.api.js';
 import { staticGenerators } from '../api/falsedb.api.js';
-import { DeleteGeneratorPopup } from '../components/Popups.jsx';
+import { CreateGeneratorPopup, DeleteGeneratorPopup } from '../components/Popups.jsx';
 
 // TODO : Refactor Popup Implementation
 function CrudTest(){
@@ -16,7 +16,6 @@ function CrudTest(){
     const [isCreating, setIsCreating] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
     const [isUpdating, setIsUpdating] = useState(false);
-    const [isPreviewing, setIsPreviewing] = useState(false);
 
     // Initialization
     useEffect(() => {
@@ -28,18 +27,17 @@ function CrudTest(){
     const createHandler = () => {
         setIsCreating(!isCreating); // false -> true
     }
-    const previewHandler = (generator) => {
-        isPreviewing(!isPreviewing); // false -> true
-    }
     const updateHandler = (id, index) => {
         setIsUpdating(!isUpdating); // false -> true
-        setActiveGenerator(generators.filter((generator) => generator._id === id)[0]);
-        activeGenerator.index = index;
+        const filteredGenerator = generators.filter((generator) => generator._id === id)[0];
+        const selectedGenerator = {...filteredGenerator, index: index};
+        setActiveGenerator(selectedGenerator);
     }
     const deleteHandler = (id, index) => {
         setIsDeleting(!isDeleting); // false -> true
-        setActiveGenerator(generators.filter((generator) => generator._id === id)[0]);
-        activeGenerator.index = index;
+        const filteredGenerator = generators.filter((generator) => generator._id === id)[0];
+        const selectedGenerator = {...filteredGenerator, index: index};
+        setActiveGenerator(selectedGenerator);
     }
     
     // Update Generator
@@ -82,9 +80,12 @@ function CrudTest(){
                 closeHandler={() => crudCloseHandler()}>
                 </DeleteGeneratorPopup>
 
-                {}
-
-                {}
+                <CreateGeneratorPopup
+                index={generators.length}
+                active={isCreating}
+                createGeneratorHandler={createGenerator}
+                closeHandler={crudCloseHandler}
+                ></CreateGeneratorPopup>
 
                 { loadingGenerators ? (Array.from(3).map((a, index) => (
                     <li key = {index}>

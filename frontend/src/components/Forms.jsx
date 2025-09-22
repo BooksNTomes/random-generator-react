@@ -4,7 +4,7 @@ import { InputContainer, ListContainer, SelectContainer } from './FormComponents
 import { BlankPopup, PreviewGeneratorPopup } from './Popups';
 
 // Generators
-export function CreateForm({closeHandler, previewHandler, createGeneratorHandler}) {
+export function CreateForm({id, closeHandler, createGeneratorHandler}) {
     const [generator, setGenerator] = useState({});
     const [activePopup, setActivePopup] = useState(false);
     const [activePreview, setActivePreview] = useState(false);
@@ -14,7 +14,10 @@ export function CreateForm({closeHandler, previewHandler, createGeneratorHandler
         setGenerator({
             ...generator,
             [name]: value,
+            image:null,
+            _id:id,
         });
+        console.log(generator);
     };
 
     const listHandler = (newList) => {
@@ -63,17 +66,17 @@ export function CreateForm({closeHandler, previewHandler, createGeneratorHandler
             </div>
 
             <div className="flex gap-5">
-                <SelectContainer label="Type" options={types} 
+                <SelectContainer name="type" label="Type" options={types} 
                 onChange={(event) => handleChange(event)}></SelectContainer>
                 <ListContainer handler={() => setActivePopup(true)}></ListContainer>
-                <SelectContainer label="Validation" options={validations}
+                <SelectContainer name="validation" label="Validation" options={validations}
                 onChange={(event) => handleChange(event)}
                 ></SelectContainer>
             </div>
 
             <div className="flex gap-10 justify-end">
                 <button onClick={() => closeHandler()}>Cancel</button>
-                <button oClick={() => setActivePreview(true)}>Preview</button>
+                <button onClick={() => setActivePreview(true)}>Preview</button>
                 <button onClick={() => createGeneratorHandler(generator)}>Create</button>
             </div>
         </div>

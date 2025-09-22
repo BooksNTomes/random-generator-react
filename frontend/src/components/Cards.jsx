@@ -8,8 +8,8 @@ export default function Card({children}){
             <div className="
                         m-0 mt-10 mb-10 
                         text-center 
-                        p-6 max-w-80 min-h-50 rounded-[5px] shadow-md border-1 border-black/15 hover:border-black
-                        hover:shadow-lg hover:max-w-85 hover:min-h-50 transition-all duration-300 ease-in-out
+                        p-6 max-w-80 min-h-81 rounded-[5px] shadow-md border-1 border-black/15 hover:border-black
+                        hover:shadow-lg hover:max-w-85 hover:min-h-81 transition-all duration-300 ease-in-out
                         ">
                 {children}
             </div>

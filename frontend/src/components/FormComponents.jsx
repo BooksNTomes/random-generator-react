@@ -10,12 +10,12 @@ export function InputContainer({label, children}){
     )
 }
 
-export function SelectContainer({label, options, onChange}){
+export function SelectContainer({name, label, options, onChange}){
     return (
         <>
             <div className="flex flex-col gap-1">
                 <label>{label}</label>
-                <select className="border-1 border-black/30 p-1 rounded min-w-[125px] max-w-[125px] min-h-[30px] max-h-[30px]"
+                <select name={name} className="border-1 border-black/30 p-1 rounded min-w-[125px] max-w-[125px] min-h-[30px] max-h-[30px]"
                         onChange={onChange}>
                     {
                         options.map((options) => (

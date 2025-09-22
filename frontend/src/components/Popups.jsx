@@ -1,6 +1,8 @@
 import '../css/index.css'
 import { useRef, useState } from "react"
-import { CreateForm, UpdateForm } from "./Forms"
+import NumbersGenerator from "../pages/GeneratorTypes/NumbersGenerator.jsx";
+import StringsGenerator from "../pages/GeneratorTypes/StringsGenerator.jsx";
+import { CreateForm, DeleteForm, UpdateForm } from "./Forms"
 import { NavCrumbs } from './Layout'
 
 // TODO Layouting
@@ -55,13 +57,14 @@ export function BlankPopup({children, active}) {
 }
 
 
-export function CreateGeneratorPopup({closeHandler, previewHandler, createGeneratorHandler}) {
+export function CreateGeneratorPopup({index, active, closeHandler, createGeneratorHandler}) {
     return(
         <>
-            <BlankPopup>
+            <BlankPopup
+            active={active}>
                 <CreateForm 
-                closeHandler={closeHandler} 
-                previewHandler={previewHandler}
+                id={index}
+                closeHandler={closeHandler}
                 createGeneratorHandler={createGeneratorHandler}>
                 </CreateForm>
             </BlankPopup>
@@ -74,13 +77,10 @@ export function DeleteGeneratorPopup({active, deleteHandler, closeHandler}){
         <>
             <BlankPopup
             active={active}>
-                <div className="w-[400px] h-[100px]">
-                    <h3>Delete Generator?</h3>
-                    <div className="flex gap-10 justify-end">
-                        <button onClick={deleteHandler}>Yes</button>
-                        <button onClick={closeHandler}>No</button>
-                    </div>
-                </div>
+                <DeleteForm
+                deleteHandler={deleteHandler}
+                closeHandler={closeHandler}>
+                </DeleteForm>
             </BlankPopup>
         </>
     )
