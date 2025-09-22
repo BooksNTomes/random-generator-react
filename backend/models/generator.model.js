@@ -9,10 +9,10 @@ const generatorSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // image:{
-    //     type: String,
-    //     required: true
-    // },
+    image:{
+        type: String,
+        required: true
+    },
     type:{
         type: String,
         required: true,
@@ -20,7 +20,6 @@ const generatorSchema = new mongoose.Schema({
     list:{
         type: [String],
         required: false,
-        default: []
     },
     validation:{
         type: String,

@@ -120,7 +120,7 @@ export function UpdateForm({generator, closeHandler, updateHandler}) {
             <PreviewGeneratorPopup
                 active={activePreview}
                 closeHandler={() => setActivePreview(false)}
-                generator={generator}
+                generator={newGenerator}
                 >
             </PreviewGeneratorPopup>
 
@@ -154,7 +154,7 @@ export function UpdateForm({generator, closeHandler, updateHandler}) {
                 defaultValue={generator.type}
                 ></SelectContainer>
 
-                <ListContainer handler={() => listHandler()} disabled={generator.type !== 'STRING'}></ListContainer>
+                <ListContainer handler={() => setActivePopup(true)} disabled={generator.type !== 'STRING'}></ListContainer>
 
                 <SelectContainer name="validation" label="Validation" options={validations}
                 onChange={(event) => handleChange(event)}

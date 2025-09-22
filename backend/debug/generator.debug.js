@@ -26,7 +26,6 @@ export const createGeneratorTest =  async () => {
                 description: "The classic, supports only integer numbers in this version. Max and Min is configurable.",
                 image: "img",
                 type: "NUMBER",
-                list: [],
                 validation: "INTEGER",
                 published: false}),
         }
