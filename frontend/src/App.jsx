@@ -6,7 +6,6 @@ import About from './pages/About';
 import Generators from './pages/Generators';
 import Generator from './pages/Generator';
 import GeneratorsManager from './pages/GeneratorsManager';
-import CrudTest from './temp/CrudTest.jsx';
 
 function App() {
   
@@ -22,8 +21,6 @@ function App() {
         <Route path="/generators/:id" element={<Generator/>}/>
 
         <Route path="/generators-manager" element={<GeneratorsManager/>}/>
-
-        <Route path="/temp" element={<CrudTest/>}/>
       </Routes>
       <Footer></Footer>
     </div>

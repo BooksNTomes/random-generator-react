@@ -109,17 +109,17 @@ export function PreviewGeneratorPopup({active, closeHandler, generator}){
     )
 }
 
-export function UpdateGeneratorPopup({generator, closeHandler}){
+export function UpdateGeneratorPopup({active, generator, closeHandler, updateHandler}){
     
     const previewHandler = () => {}
 
     return(
         <>
-            <BlankPopup>
+            <BlankPopup
+            active={active}>
                 <UpdateForm
                 generator={generator}
                 closeHandler={closeHandler}
-                previewHandler={() => previewHandler()}
                 updateHandler={updateHandler}>
                 </UpdateForm>
             </BlankPopup>

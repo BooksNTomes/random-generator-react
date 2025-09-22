@@ -1,80 +1,72 @@
 /* eslint-disable no-unused-vars */
 import '../css/index.css';
 import { NavCrumbs } from '../components/Layout.jsx';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard } from '../components/Cards.jsx';
 import { retrieveGenerators } from '../api/generators.api.js';
 import { staticGenerators } from '../api/falsedb.api.js';
-
-import {GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard} from '../components/Cards.jsx';
-
-import CreateGeneratorPopup from '../components/Popups/CreateGeneratorPopup.jsx';
-import DeleteGeneratorPopup from '../components/Popups/DeleteGeneratorPopup.jsx';
-import UpdateGeneratorPopup from '../components/Popups/UpdateGeneratorPopup.jsx';
+import { CreateGeneratorPopup, DeleteGeneratorPopup, UpdateGeneratorPopup } from '../components/Popups.jsx';
 
 // TODO : Refactor Popup Implementation
 function GeneratorsManager(){
     const [generators, setGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);
     const [activeGenerator, setActiveGenerator] = useState(null);
+
     const [isCreating, setIsCreating] = useState(false);
-    const updateRef = useRef(null);
-    const createRef = useRef(null);
-    const deleteRef = useRef(null);
-    
-    // Temporary (only for testing purposes)
-    const [savedGenerators, setSavedGenerators] = useState([]);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
 
     // Initialization
     useEffect(() => {
         setGenerators(staticGenerators);
-        // setSavedGenerators(staticGenerators);
         setLoadingGenerators(false);
     },[])
     
     // Modals
     const createHandler = () => {
-        setIsCreating(!isCreating);
-        createRef.current?.showModal();
+        setIsCreating(!isCreating); // false -> true
     }
-    const updateHandler = (id) => {
-        setActiveGenerator(generators.filter((generator) => generator._id === id)[0]);
-        updateRef.current?.showModal();
+    const updateHandler = (id, index) => {
+        setIsUpdating(!isUpdating); // false -> true
+        const filteredGenerator = generators.filter((generator) => generator._id === id)[0];
+        const selectedGenerator = {...filteredGenerator, index: index};
+        setActiveGenerator(selectedGenerator);
     }
-    const deleteHandler = (id) => {
-        setActiveGenerator(generators.filter((generator) => generator._id === id)[0]);
-        deleteRef.current?.showModal();
+    const deleteHandler = (id, index) => {
+        setIsDeleting(!isDeleting); // false -> true
+        const filteredGenerator = generators.filter((generator) => generator._id === id)[0];
+        const selectedGenerator = {...filteredGenerator, index: index};
+        setActiveGenerator(selectedGenerator);
     }
-    const closeHandler = (ref) => {
-        setIsCreating(!isCreating);
-        ref.current?.close();
-    }
-    const cancelHandler = (ref) => {
-        setActiveGenerator(null);
-        ref.current?.close();
-    }
-
-    // Show Preview
-    const showPreview = (activeGenerator) => {
-        
-    }
+    
     // Update Generator
-    const updateGenerator = (id, newGenerator) => {
-        const newGenerators = generators.slice().splice(id, 1, newGenerator);
-        setGenerators(newGenerators)
-        
+    const updateGenerator = (newGenerator) => {
+        const newGenerators = generators.slice();
+        newGenerators.splice(activeGenerator.index, 1, newGenerator);
+        setGenerators(newGenerators);
+        setIsUpdating(!isUpdating); // true -> false
     }
     // Delete Generator
-    const deleteGenerator = (id) => {
-        const newGenerators = generators.slice().splice(id, 1);
-        setGenerators(newGenerators)
-
+    const deleteGenerator = () => {
+        const newGenerators = generators.slice();
+        newGenerators.splice (activeGenerator.index, 1);
+        setGenerators(newGenerators);
+        setIsDeleting(!isDeleting); // true -> false
     }
     // Create Generator
     const createGenerator = (generator) => {
         console.log(generator);
-        // const newGenerators = generators.slice().splice(generators.length-1, 0, generator);
-        // setGenerators(newGenerators)
-        closeHandler(createRef);
+        const newGenerators = [...generators, generator]
+        setGenerators(newGenerators)
+        setIsCreating(!isCreating); // true -> false
+    }
+
+    const crudCloseHandler = () => {
+        setActiveGenerator(null);
+        setIsCreating(false);
+        setIsDeleting(false);
+        setIsUpdating(false);
     }
 
     return(
@@ -82,40 +74,36 @@ function GeneratorsManager(){
             <NavCrumbs navTarget={''}></NavCrumbs>
             <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
 
-            <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={createRef}>
-                {isCreating ? 
-                    <CreateGeneratorPopup closeHandler={() => closeHandler(createRef)}
-                        createGeneratorHandler={createGenerator}
-                    ></CreateGeneratorPopup>
-                    :
-                    <></>
-                }
-            </dialog>
+                <DeleteGeneratorPopup
+                active={isDeleting}
+                deleteHandler={() => deleteGenerator()}
+                closeHandler={() => crudCloseHandler()}>
+                </DeleteGeneratorPopup>
 
-            <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={deleteRef}>
-                {(activeGenerator !== null && activeGenerator !== undefined) && 
-                <DeleteGeneratorPopup closeHandler={() => cancelHandler(deleteRef)}>
-                </DeleteGeneratorPopup>}
-            </dialog>
+                <CreateGeneratorPopup
+                index={generators.length}
+                active={isCreating}
+                createGeneratorHandler={createGenerator}
+                closeHandler={crudCloseHandler}
+                ></CreateGeneratorPopup>
 
-            <dialog className="p-5 m-auto  border-2 border-black/50 rounded" ref={updateRef}>
-                {(activeGenerator !== null && activeGenerator !== undefined) && 
-                <UpdateGeneratorPopup 
+                <UpdateGeneratorPopup
+                active={isUpdating}
                 generator={activeGenerator}
-                closeHandler={() => cancelHandler(updateRef)}
-                ></UpdateGeneratorPopup>}
-            </dialog>
+                updateHandler={updateGenerator}
+                closeHandler={crudCloseHandler}
+                ></UpdateGeneratorPopup>
 
                 { loadingGenerators ? (Array.from(3).map((a, index) => (
                     <li key = {index}>
                         <GeneratorLoadingCard/>
                     </li>
-                ))) : generators.map(generator => (
+                ))) : generators.map((generator, index) => (
                     <li key= {generator._id}>
                         <GeneratorManagerCard
                         generator={generator}
-                        updateHandler={() => updateHandler(generator._id)}
-                        deleteHandler={() => deleteHandler(generator._id)}
+                        updateHandler={() => updateHandler(generator._id, index)}
+                        deleteHandler={() => deleteHandler(generator._id, index)}
                         />
                     </li>
                 ))}

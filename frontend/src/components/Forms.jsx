@@ -17,7 +17,6 @@ export function CreateForm({id, closeHandler, createGeneratorHandler}) {
             image:null,
             _id:id,
         });
-        console.log(generator);
     };
 
     const listHandler = (newList) => {
@@ -83,7 +82,7 @@ export function CreateForm({id, closeHandler, createGeneratorHandler}) {
     )
 }
 
-export function UpdateForm({generator, closeHandler, previewHandler, updateHandler}) {
+export function UpdateForm({generator, closeHandler, updateHandler}) {
     const [newGenerator, setNewGenerator] = useState({...generator});
     const [activePopup, setActivePopup] = useState(false);
     const [activePreview, setActivePreview] = useState(false);
@@ -106,6 +105,23 @@ export function UpdateForm({generator, closeHandler, previewHandler, updateHandl
         <div className="flex flex-col gap-10">
 
             <h3>Generators &gt; {generator.name}</h3>
+
+            <BlankPopup
+                active={activePopup}>
+                <ListCreate
+                currentList={generator.list}
+                closeHandler={() => setActivePopup(false)}
+                saveHandler={listHandler}
+                >
+                </ListCreate>
+            </BlankPopup>
+
+            <PreviewGeneratorPopup
+                active={activePreview}
+                closeHandler={() => setActivePreview(false)}
+                generator={generator}
+                >
+            </PreviewGeneratorPopup>
 
             <div className="flex gap-5">
                 <div className="flex flex-col">
@@ -132,14 +148,14 @@ export function UpdateForm({generator, closeHandler, previewHandler, updateHandl
             </div>
 
             <div className="flex gap-5">
-                <SelectContainer label="Type" options={types} 
+                <SelectContainer name="type" label="Type" options={types} 
                 onChange={(event) => handleChange(event)}
                 defaultValue={generator.type}
                 ></SelectContainer>
 
                 <ListContainer handler={() => listHandler()}></ListContainer>
 
-                <SelectContainer label="Validation" options={validations}
+                <SelectContainer name="validation" label="Validation" options={validations}
                 onChange={(event) => handleChange(event)}
                 defaultValue={generator.validation}
                 ></SelectContainer>
@@ -147,8 +163,8 @@ export function UpdateForm({generator, closeHandler, previewHandler, updateHandl
 
             <div className="flex gap-10 justify-end">
                 <button onClick={() => closeHandler()}>Cancel</button>
-                <button onClick={() => previewHandler()}>Preview</button>
-                <button onClick={() => updateHandler()}>Update</button>
+                <button onClick={() => setActivePreview(true)}>Preview</button>
+                <button onClick={() => updateHandler(newGenerator)}>Update</button>
             </div>
 
         </div>

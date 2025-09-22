@@ -17,6 +17,7 @@ export function SelectContainer({name, label, options, onChange}){
                 <label>{label}</label>
                 <select name={name} className="border-1 border-black/30 p-1 rounded min-w-[125px] max-w-[125px] min-h-[30px] max-h-[30px]"
                         onChange={onChange}>
+                        <option value="">Select {label}</option>
                     {
                         options.map((options) => (
                             <option value={options.value}>{options.name}</option>
