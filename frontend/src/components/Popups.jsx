@@ -69,18 +69,19 @@ export function CreateGeneratorPopup({closeHandler, previewHandler, createGenera
     )
 }
 
-export function DeleteGeneratorPopup({closeHandler}){
+export function DeleteGeneratorPopup({active, deleteHandler, closeHandler}){
     return(
         <>
-            <Popup>
+            <BlankPopup
+            active={active}>
                 <div className="w-[400px] h-[100px]">
                     <h3>Delete Generator?</h3>
                     <div className="flex gap-10 justify-end">
-                        <button>Yes</button>
+                        <button onClick={deleteHandler}>Yes</button>
                         <button onClick={closeHandler}>No</button>
                     </div>
                 </div>
-            </Popup>
+            </BlankPopup>
         </>
     )
 }
