@@ -27,7 +27,7 @@ export default function Popup({children, closeHandler, active}) {
                 </div>
                 ) :
                 (
-                  <div></div>  
+                  <div className="null"></div>  
                 )}
         </>
     )
@@ -50,7 +50,7 @@ export function BlankPopup({children, active}) {
                 </div>
                 ) :
                 (
-                  <div></div>  
+                  <div className="null"></div>  
                 )}
         </>
     )

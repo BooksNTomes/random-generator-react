@@ -67,9 +67,10 @@ export function CreateForm({id, closeHandler, createGeneratorHandler}) {
             <div className="flex gap-5">
                 <SelectContainer name="type" label="Type" options={types} 
                 onChange={(event) => handleChange(event)}></SelectContainer>
-                <ListContainer handler={() => setActivePopup(true)}></ListContainer>
+                <ListContainer handler={() => setActivePopup(true)} disabled={generator.type !== 'STRING'}></ListContainer>
                 <SelectContainer name="validation" label="Validation" options={validations}
                 onChange={(event) => handleChange(event)}
+                disabled={generator.type !== 'NUMBER'}
                 ></SelectContainer>
             </div>
 
@@ -153,11 +154,12 @@ export function UpdateForm({generator, closeHandler, updateHandler}) {
                 defaultValue={generator.type}
                 ></SelectContainer>
 
-                <ListContainer handler={() => listHandler()}></ListContainer>
+                <ListContainer handler={() => listHandler()} disabled={generator.type !== 'STRING'}></ListContainer>
 
                 <SelectContainer name="validation" label="Validation" options={validations}
                 onChange={(event) => handleChange(event)}
                 defaultValue={generator.validation}
+                disabled={generator.type !== 'NUMBER'}
                 ></SelectContainer>
             </div>
 

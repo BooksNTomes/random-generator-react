@@ -36,11 +36,11 @@ export function GeneratorCreateCard({clickHandler}){
 
     return (
         <>
-            <Card>
-                <button onClick={clickHandler}>
+            <button onClick={clickHandler}>
+                <Card>
                     <h2 className="pt-15">Create Generator</h2>
-                </button>
-            </Card>
+                </Card>
+            </button>
         </>
     )
 }

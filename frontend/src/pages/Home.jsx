@@ -6,9 +6,9 @@ import {ImageCard} from '../components/Cards.jsx';
 
 function Home() {
     return (
-        <div className='browser-size m-auto'>
-            <div className='pt-10 pb-10 border-b-1 border-black/10'>
-                <div className="flex justify-between items-center ">
+        <div className=''>
+            <div className='pt-10 pb-10 border-black/10 border-b-1'>
+                <div className="browser-size m-auto flex justify-between items-center ">
                     <img className="ml-auto size-70" src={logo} alt="hero-img"></img>
                     <div className='ml-40 w-1/2 p-2 flex flex-col gap-2'>
                         <h2 className='w-7/8 mb-3'>Not Just Random Number Generators</h2>
@@ -21,7 +21,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-4 items-center justify-evenly">
+            <div className="browser-size m-auto flex gap-4 items-center justify-evenly">
                 <ImageCard 
                 image={first}
                 name={"Lists of Objects"} 

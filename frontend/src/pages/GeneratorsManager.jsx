@@ -72,7 +72,7 @@ function GeneratorsManager(){
     return(
         <div className='browser-size m-auto'>
             <NavCrumbs navTarget={''}></NavCrumbs>
-            <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10'>
+            <div className='flex justify-evenly gap-4 flex-wrap h-full rounded-[10px] shadow-md border-1 border-black/10 mb-10'>
 
                 <DeleteGeneratorPopup
                 active={isDeleting}
@@ -108,7 +108,7 @@ function GeneratorsManager(){
                     </li>
                 ))}
 
-                <GeneratorCreateCard clickHandler={() => createHandler()}></GeneratorCreateCard>
+                <GeneratorCreateCard key="CREATE" clickHandler={() => createHandler()}></GeneratorCreateCard>
                 
             </div>
         </div>

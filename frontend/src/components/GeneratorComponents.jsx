@@ -9,7 +9,7 @@ export function Output({genState, genHandler}){
                 <div className="p-5 h-[350px] border-1 border-black/5 rounded-[5px] shadow-sm">
                     <h3>{genState}</h3>
                 </div>
-                <button className="absolute bottom-10 right-64.5 w-5/16 p-3 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-[hsl(0,0%,90%)] active:bg-[hsl(0,0%,80%)] bg-white"
+                <button className="relative bottom-10 left-8 w-7/8 p-3 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-[hsl(0,0%,90%)] active:bg-[hsl(0,0%,80%)] bg-white"
                         onClick={() => genHandler()}>
                     Generate
                 </button>

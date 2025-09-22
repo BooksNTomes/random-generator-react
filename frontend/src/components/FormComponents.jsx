@@ -10,17 +10,19 @@ export function InputContainer({label, children}){
     )
 }
 
-export function SelectContainer({name, label, options, onChange}){
+export function SelectContainer({name, label, options, onChange, defaultValue="", disabled=false}){
     return (
         <>
             <div className="flex flex-col gap-1">
                 <label>{label}</label>
                 <select name={name} className="border-1 border-black/30 p-1 rounded min-w-[125px] max-w-[125px] min-h-[30px] max-h-[30px]"
-                        onChange={onChange}>
-                        <option value="">Select {label}</option>
+                        onChange={onChange}
+                        defaultValue={defaultValue}
+                        disabled={disabled}>
+                        <option key="SELECT" value="">Select {label}</option>
                     {
-                        options.map((options) => (
-                            <option value={options.value}>{options.name}</option>
+                        options.map((options, index) => (
+                            <option key={index} value={options.value}>{options.name}</option>
                         ))
                     }
                 </select>
@@ -29,11 +31,11 @@ export function SelectContainer({name, label, options, onChange}){
     )
 }
 
-export function ListContainer({handler}) {
+export function ListContainer({handler, disabled=false}) {
     return (
         <div className="flex flex-col gap-1">
             <label>List</label>
-            <button onClick={() => handler()} className="border-1 border-black/30 p-1 rounded min-w-[125px] max-w-[125px] min-h-[30px] max-h-[30px]"></button>
+            <button disabled={disabled} onClick={() => handler()} className="border-1 border-black/30 p-1 rounded min-w-[125px] max-w-[125px] min-h-[30px] max-h-[30px]"></button>
         </div>
     )
 }
