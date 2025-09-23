@@ -1,10 +1,10 @@
 import User from "../models/user.model.js";
 import { createNewUser, createToken, hashPassword, validPassword, validUser } from "../services/user.services.js";
 
-// import dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
-// WIP
+dotenv.config();
 
 export const register = async (req,res) => {
     const user =  req.body;
@@ -39,8 +39,17 @@ export const login = async (req, res) => {
             return res.status(401).json({success: false, message:"Incorrect credentials"});
         }
 
-        const accessToken = createToken(user, {expiresIn: '15m'});
-        const refreshToken = createToken(user, {expiresIn:'7d'})
+        const accessToken = jwt.sign(
+            {id: user._id, name: user.name}, 
+            process.env.SECRET, 
+            {expiresIn: '15m'}
+        );
+
+        const refreshToken = jwt.sign(
+            {id: user._id, name: user.name}, 
+            process.env.SECRET, 
+            {expiresIn: '7d'}
+        );
 
         res.cookie("jwt", refreshToken, {
             httpOnly:true,
@@ -53,7 +62,7 @@ export const login = async (req, res) => {
             success:true,
             message:"Login successful",
             credentials:{
-                userID: user._id,
+                id: user._id,
                 name: user.name,
                 token: accessToken
             }
@@ -76,7 +85,9 @@ export const logout = async (req, res) => {
 export const refresh = () => {
     const cookies = req.cookies;
 
-    if (!cookies?.jwt) res.status(401).json({success:false, message: 'No refresh token found'});
+    if (!cookies?.jwt) {
+        res.status(401).json({success:false, message: 'No refresh token found'})
+    };
 
     const refreshToken = cookies.jwt;
 
@@ -84,7 +95,7 @@ export const refresh = () => {
         if (err) return res.status(401).json({success:false, message: 'Invalid refresh token found'});
 
         const accessToken = jwt.sign(
-            {user_id: decoded.user_id,
+            {id: decoded._id,
             name: decoded.name},
             process.env.SECRET,
             {expiresIn: '15m'}
@@ -101,9 +112,9 @@ export const authenticate = (req, res, next) => {
 
     const token = authHeader.split(" ")[1]
     jwt.verify(token, process.env.SECRET, (err, user) =>{
-        if (err) res.status(401).json({success:false, message: 'Invalid token'});
+        if (err) return res.status(401).json({success:false, message: 'Invalid token'});
 
         req.user = user;
-        next();
+        return res.status(200).json({ message: "You are authenticated!", user: req.user });
     })
 }

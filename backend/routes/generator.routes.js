@@ -8,7 +8,7 @@ router.get("/generators", getGenerators);
 router.get("/generators/:id", getGenerator);
 // ADMIN VIEW ("MANAGER")
 router.get("/generators-manager", getGenerators);
-router.post("/generators-manager/create", createGenerator);
+router.post("/generators-manager", createGenerator);
 router.put("/generators-manager/:id", updateGenerator);
 router.delete("/generators-manager/:id", deleteGenerator);
 
