@@ -1,8 +1,6 @@
 import axios from 'axios';
 const URL = import.meta.env.VITE_API_BACKEND_URL;
 
-
-// Setting up with axios
 export async function getGenerators(token){
 
     try{
@@ -62,10 +60,10 @@ export async function createGenerator(token, newGenerator){
     }
 }
 
-export async function updateGenerator(token, editedGenerator){
+export async function updateGenerator(token, id, editedGenerator){
     try{
         const response = await axios.put(
-            `${BACKEND_URL}/generators-manager`,
+            `${BACKEND_URL}/generators-manager/${id}`,
             {
                 name: editedGenerator.name,
                 description: editedGenerator.description,
@@ -88,10 +86,10 @@ export async function updateGenerator(token, editedGenerator){
 }
 
 
-export async function deleteGenerator(token, project_id){
+export async function deleteGenerator(token, id){
     try{
         const response = await axios.delete(
-            `${BACKEND_URL}/generators-manager`,
+            `${BACKEND_URL}/generators-manager/${id}`,
             { project_id },
             {
                 headers: {"Authorization": `Bearer ${token}`, "Content-Type": 'application/json'},
