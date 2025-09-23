@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
 import generatorRoutes from './routes/generator.routes.js';
+import userRoutes from './routes/user.routes.js';
 import { runTests } from './debug/generator.debug.js';
 
 // Parameters
@@ -19,6 +20,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser())
 app.use("/", generatorRoutes);
+app.use("/admin/", userRoutes);
 app.listen(process.env.PORT, () => {
     connectDB();
     console.log(`Server started at: ${URL}`);
