@@ -50,7 +50,7 @@ export async function refresh(){
     }
 }
 
-export async function signup(username, password){
+export async function register(username, password){
     try{
         const response = await axios.post(
             `${URL}/admin/register`,
