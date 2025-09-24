@@ -71,12 +71,12 @@ export const AuthProvider = ({ children }) => {
             queryClient.setQueryData(['user'], data.user);
             setAuthenticated(true);
             setIsLoading(false)
-            setMessageError('')
+            setErrorMessage('')
             navigate('/generators-manager');
         },
         onError:(error) => {
             setIsLoading(false);
-            setMessageError(error.message)
+            setErrorMessage(error.message)
         }
     });
 
@@ -84,11 +84,11 @@ export const AuthProvider = ({ children }) => {
     const registerMutation = useMutation({
         mutationFn: ({ username, password }) => register(username, password),
         onSuccess: (_data, credentials) => {
-            setMessageError('');
+            setErrorMessage('');
             loginMutation.mutate(credentials);
         },
         onError: (error) => {
-            setMessageError(error.message);
+            setErrorMessage(error.message);
         }
     });
 

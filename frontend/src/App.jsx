@@ -1,6 +1,7 @@
 import './css/index.css';
-import {Routes, Route} from 'react-router-dom';
-import {Header, Footer} from './components/Layout.jsx'
+import { Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './hooks/useAuth.js';
+import { Header, Footer } from './components/Layout.jsx'
 import Home from './pages/Home';
 import About from './pages/About';
 import Generators from './pages/Generators';
@@ -12,20 +13,25 @@ function App() {
   
   return (
     <div className="min-h-dvh min-w-dvw flex flex-col">
-      <Header></Header>
-      <Routes className="flex-grow">
-        <Route path="/" element={<Home/>} />
-        <Route path="/about" element={<About/>} />
+      {/** <Router> */}
+        {/** <AuthProvider> */}
+          <Header></Header>
+          <Routes className="flex-grow">
+            <Route path="/" element={<Home/>} />
+            <Route path="/about" element={<About/>} />
 
-        <Route path="/generators" element={<Generators/>}/>
+            <Route path="/generators" element={<Generators/>}/>
 
-        <Route path="/generators/:id" element={<Generator/>}/>
+            <Route path="/generators/:id" element={<Generator/>}/>
 
-        <Route path="/generators-manager" element={<GeneratorsManager/>}/>
+            <Route path="/generators-manager" element={<GeneratorsManager/>}/>
+            {/** <ProtectedRoute path="/generators-manager" element={<GeneratorsManager/>}/> */}
 
-        <Route path="/auth" element={<Auth></Auth>}/>
-      </Routes>
-      <Footer></Footer>
+            <Route path="/auth" element={<Auth/>}/>
+          </Routes>
+          <Footer></Footer>
+        {/** </AuthProvider> */}
+      {/** </Router> */}
     </div>
   )
 }
