@@ -190,14 +190,16 @@ export function ListForm({initialList, itemsList, itemToggle}){
 
     return (
         <>
-            {initialList.map((entry, index) => (
-            <span key={index}>
-                <input type="checkbox" 
-                onChange={ (event) => itemToggle(event, index) } 
-                name={entry} 
-                defaultChecked={itemsList[index] !== '' ? true : false}/>
-                <label htmlFor={entry}>{entry}</label>
-            </span>))}
+            <div className='min-w-[400px] max-h-[200px] overflow-scroll flex flex-col'>
+                {initialList.map((entry, index) => (
+                <span key={index} className='flex gap-2'>
+                    <input type="checkbox" 
+                    onChange={ (event) => itemToggle(event, index) } 
+                    name={entry} 
+                    defaultChecked={itemsList[index] !== '' ? true : false}/>
+                    <label htmlFor={entry}>{entry}</label>
+                </span>))}
+            </div>
         </>
     )
 }
