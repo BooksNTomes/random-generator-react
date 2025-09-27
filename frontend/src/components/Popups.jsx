@@ -11,7 +11,7 @@ export default function Popup({children, closeHandler, active}) {
             {active ? (
                 <div>
                     <div className="overlay"
-                    onClick={() => console.log("Overlay")}
+                    onClick={() => closeHandler()}
                     ></div>
 
                     <div className="z-20 absolute border-black border-1 
@@ -38,7 +38,7 @@ export function BlankPopup({children, active}) {
             {active ? (
                 <div>
                     <div className="overlay"
-                    onClick={() => console.log("Overlay")}
+                    onClick={() => closeHandler()}
                     ></div>
 
                     <div className="z-20 absolute border-black border-1 

@@ -5,20 +5,23 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Generators from './pages/Generators';
 import Generator from './pages/Generator';
+import ScrollTop from './components/ScrollTop.jsx';
 
 function App() {
-  
   return (
-    <div className="min-h-dvh min-w-dvw flex flex-col">
-      <Header></Header>
-      <Routes className="flex-grow">
-        <Route path="/" element={<Home/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/generators" element={<Generators/>}/>
-        <Route path="/generators/:id" element={<Generator/>}/>
-      </Routes>
-      <Footer></Footer>
-    </div>
+    <>
+      <ScrollTop/>
+      <div className="min-h-dvh min-w-dvw flex flex-col">
+        <Header></Header>
+        <Routes className="flex-grow">
+          <Route path="/" element={<Home/>} />
+          <Route path="/about" element={<About/>} />
+          <Route path="/generators" element={<Generators/>}/>
+          <Route path="/generators/:id" element={<Generator/>}/>
+        </Routes>
+        <Footer></Footer>
+      </div>
+    </>
   )
 }
 
