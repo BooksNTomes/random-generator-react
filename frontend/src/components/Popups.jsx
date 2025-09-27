@@ -5,7 +5,6 @@ import StringsGenerator from "../pages/GeneratorTypes/StringsGenerator.jsx";
 import { CreateForm, DeleteForm, UpdateForm } from "./Forms"
 import { NavCrumbs } from './Layout'
 
-// TODO Layouting
 export default function Popup({children, closeHandler, active}) {
     return (
         <>
@@ -87,7 +86,6 @@ export function DeleteGeneratorPopup({active, deleteHandler, closeHandler}){
 }
 
 export function PreviewGeneratorPopup({active, closeHandler, generator}){
-
     return(
     <>
         <Popup
@@ -110,9 +108,6 @@ export function PreviewGeneratorPopup({active, closeHandler, generator}){
 }
 
 export function UpdateGeneratorPopup({active, generator, closeHandler, updateHandler}){
-    
-    const previewHandler = () => {}
-
     return(
         <>
             <BlankPopup

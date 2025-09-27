@@ -29,6 +29,7 @@ export const useNumbers = (validation) => {
         if (validation !== "FLOAT"){
             value = Math.floor(value);
         }
+        value = Number(value);
         setMinState(value);
     }
     const maxHandler = (event) => {
@@ -36,6 +37,7 @@ export const useNumbers = (validation) => {
         if (validation !== "FLOAT"){
             value = Math.floor(value);
         }
+        value = Number(value);
         setMaxState(value);
     }
 

@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import { useState } from 'react';
 import { types, validations } from '../constants/generator.constants';
 import { InputContainer, ListContainer, SelectContainer } from './FormComponents';
 import { BlankPopup, PreviewGeneratorPopup } from './Popups';
