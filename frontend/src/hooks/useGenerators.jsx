@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getGenerators, getGenerator, createGenerator, updateGenerator, deleteGenerator } from "../api/generators.api.js";
-import { useAuth } from "./useAuth";
+import { useAuth } from "./useAuth.jsx";
 
 export default function useGenerators() {
     const { token } = useAuth();

@@ -3,13 +3,16 @@ import { useState, useEffect, useRef } from "react";
 import { Config, Output } from "../../components/GeneratorComponents";
 import { ListForm } from "../../components/Forms";
 import Popup from "../../components/Popups";
-import { useDefaults } from "../../hooks/GeneratorHooks";
+import { useAppendMethods, useDefaults } from "../../hooks/GeneratorHooks";
 
 export default function StringsGenerator({generator}) {
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
     const [genState, setGenState] = useState('');
     const [activePopup, setActivePopup] = useState(false);
     const [listState, setListState] = useState(generator.list);
+    
+    const {append, appendComma} = useAppendMethods();
+    const appendMethod = generator.appendMethod === ',' ? appendComma : append;
     
     const initialList = generator.list;
     
@@ -36,7 +39,7 @@ export default function StringsGenerator({generator}) {
                     while (stateCandidate === '' || stateCandidate === undefined) {
                         stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
                     }
-                    newGenState += (stateCandidate) + (i+1 < amountState ? ', ' : ' ');
+                    newGenState += (stateCandidate) + (appendMethod(i, amountState));
                 }
             }
             setGenState(newGenState);

@@ -19,15 +19,11 @@ function App() {
           <Routes className="flex-grow">
             <Route path="/" element={<Home/>} />
             <Route path="/about" element={<About/>} />
-
             <Route path="/generators" element={<Generators/>}/>
-
             <Route path="/generators/:id" element={<Generator/>}/>
-
-            <Route path="/generators-manager" element={<GeneratorsManager/>}/>
+            {/* <Route path="/generators-manager" element={<GeneratorsManager/>}/> */}
             {/** <ProtectedRoute path="/generators-manager" element={<GeneratorsManager/>}/> */}
-
-            <Route path="/auth" element={<Auth/>}/>
+            {/* <Route path="/auth" element={<Auth/>}/> */}
           </Routes>
           <Footer></Footer>
         {/** </AuthProvider> */}

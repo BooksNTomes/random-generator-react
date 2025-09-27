@@ -42,25 +42,14 @@ export const useNumbers = (validation) => {
     return {minState, maxState, minHandler, maxHandler, minAsNumber, maxAsNumber};
 }
 
-// export const stringsHandler = () => {
-//     const [genState, setGenState] = useState('');
-//     const genHandler = () => {
-//         if (listState.length < 1){
-//             setGenState("Empty List");
-//         }
-//         else{
-//             let newGenState = ``
-//             for (let i = 0; i < amtState; i++){
-//                 if (algorithmState === "default"){
-//                     let stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
-//                     while (stateCandidate === '' || stateCandidate === undefined) {
-//                         stateCandidate = listState[Math.floor(Math.random() * (listState.length - 0 + 1) + 0)];
-//                     }
-//                     newGenState += (stateCandidate) + (i+1 < amtState ? ', ' : ' ');
-//                 }
-//             }
-//             setGenState(newGenState);
-//         }
-//     }
-//     return {genState, setGenState, genHandler};
-// }
+export const useAppendMethods = () => {
+    const append = (i, amountState) => {
+        return i+1 < amountState ? '' : ' '
+    }
+
+    const appendComma = (i, amountState) => {
+        return i+1 < amountState ? ', ' : ' '
+    }
+
+    return {append, appendComma};
+}
