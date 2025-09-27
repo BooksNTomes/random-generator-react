@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { Config, Output } from "../../components/GeneratorComponents";
-import { ListForm } from "../../components/Forms";
-import Popup from "../../components/Popups";
-import { useAppendMethods, useDefaults } from "../../hooks/GeneratorHooks";
+import { Config, Output } from "../../components/GeneratorComponents.jsx";
+import { ListForm } from "../../components/Forms.jsx";
+import Popup from "../../components/Popups.jsx";
+import { useAppendMethods, useDefaults } from "../../hooks/useGeneratorHooks.js";
 
 export default function StringsGenerator({generator}) {
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();

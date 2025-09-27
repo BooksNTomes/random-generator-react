@@ -44,7 +44,7 @@ export const useNumbers = (validation) => {
 
 export const useAppendMethods = () => {
     const append = (i, amountState) => {
-        return i+1 < amountState ? '' : ' '
+        return i+1 < amountState ? '' : ''
     }
 
     const appendComma = (i, amountState) => {

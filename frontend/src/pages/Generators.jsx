@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { NavCrumbs } from '../components/Layout.jsx';
 import { GeneratorCard, GeneratorLoadingCard } from '../components/Cards.jsx';
 import { staticGenerators } from '../api/falsedb.api.js';
-import { retrieveGenerators } from '../api/generators.api.js';
 
 function Generators(){
     const [generators, setGenerators] = useState([]);

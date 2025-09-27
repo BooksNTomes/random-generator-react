@@ -6,7 +6,6 @@ import { GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard } from 
 import { CreateGeneratorPopup, DeleteGeneratorPopup, UpdateGeneratorPopup } from '../../components/Popups.jsx';
 import { staticGenerators } from '../../api/falsedb.api.js';
 
-// TODO : Refactor Popup Implementation
 function GeneratorsManager(){
     const [generators, setGenerators] = useState([]);
     const [loadingGenerators, setLoadingGenerators] = useState(true);
