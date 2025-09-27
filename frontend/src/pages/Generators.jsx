@@ -36,27 +36,3 @@ function Generators(){
 }
 
 export default Generators;
-
-    // Call Retrieve Generators from API
-    // useEffect(() => {
-    //     const fetchGenerators = async () => {
-    //         try {
-    //             setLoadingGenerators(true);
-    //             const response = await retrieveGenerators();
-
-    //             if (response.ok){
-    //                 const data = await response.json();
-    //                 const generators = data.data;
-    //                 if (generators.length > 0){
-    //                     setGenerators(generators);
-    //                     setLoadingGenerators(false);
-    //                 } else {
-    //                     setGenerators([]);
-    //                 }
-    //             }
-    //         } catch (err) {
-    //             console.log("Error in fetching generators");
-    //         }
-    //     }
-    //     fetchGenerators();
-    // }, []);

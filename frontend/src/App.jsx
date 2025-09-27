@@ -6,28 +6,21 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Generators from './pages/Generators';
 import Generator from './pages/Generator';
-import GeneratorsManager from './pages/GeneratorsManager';
-import Auth from './pages/Auth.jsx';
+import GeneratorsManager from './pages/AdminPages/GeneratorsManager.jsx';
+import Auth from './pages/AdminPages/Auth.jsx';
 
 function App() {
   
   return (
     <div className="min-h-dvh min-w-dvw flex flex-col">
-      {/** <Router> */}
-        {/** <AuthProvider> */}
-          <Header></Header>
-          <Routes className="flex-grow">
-            <Route path="/" element={<Home/>} />
-            <Route path="/about" element={<About/>} />
-            <Route path="/generators" element={<Generators/>}/>
-            <Route path="/generators/:id" element={<Generator/>}/>
-            {/* <Route path="/generators-manager" element={<GeneratorsManager/>}/> */}
-            {/** <ProtectedRoute path="/generators-manager" element={<GeneratorsManager/>}/> */}
-            {/* <Route path="/auth" element={<Auth/>}/> */}
-          </Routes>
-          <Footer></Footer>
-        {/** </AuthProvider> */}
-      {/** </Router> */}
+      <Header></Header>
+      <Routes className="flex-grow">
+        <Route path="/" element={<Home/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/generators" element={<Generators/>}/>
+        <Route path="/generators/:id" element={<Generator/>}/>
+      </Routes>
+      <Footer></Footer>
     </div>
   )
 }

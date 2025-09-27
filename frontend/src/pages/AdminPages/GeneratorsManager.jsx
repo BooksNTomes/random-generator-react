@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import '../css/index.css';
-import { NavCrumbs } from '../components/Layout.jsx';
+import { NavCrumbs } from '../../components/Layout.jsx';
 import { useState, useEffect } from 'react';
-import { GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard } from '../components/Cards.jsx';
-import { retrieveGenerators } from '../api/generators.api.js';
-import { staticGenerators } from '../api/falsedb.api.js';
-import { CreateGeneratorPopup, DeleteGeneratorPopup, UpdateGeneratorPopup } from '../components/Popups.jsx';
+import { GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard } from '../../components/Cards.jsx';
+import { CreateGeneratorPopup, DeleteGeneratorPopup, UpdateGeneratorPopup } from '../../components/Popups.jsx';
+import { staticGenerators } from '../../api/falsedb.api.js';
 
 // TODO : Refactor Popup Implementation
 function GeneratorsManager(){
@@ -116,27 +115,3 @@ function GeneratorsManager(){
 }
 
 export default GeneratorsManager;
-
-
-    // useEffect(() => {
-    //     const fetchGenerators = async () => {
-    //         try {
-    //             setLoadingGenerators(true);
-    //             const response = await retrieveGenerators();
-
-    //             if (response.ok){
-    //                 const data = await response.json();
-    //                 const generators = data.data;
-    //                 if (generators.length > 0){
-    //                     setGenerators(generators);
-    //                     setLoadingGenerators(false);
-    //                 } else {
-    //                     setGenerators([]);
-    //                 }
-    //             }
-    //         } catch (err) {
-    //             console.log("Error in fetching generators");
-    //         }
-    //     }
-    //     fetchGenerators();
-    // }, []);
