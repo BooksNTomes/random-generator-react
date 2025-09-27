@@ -143,7 +143,7 @@ export function UpdateForm({generator, closeHandler, updateHandler}) {
                 <InputContainer label="Image">
                     <input name="image" type="file" className=""
                     onChange={(event) => handleChange(event)}
-                    defaultValue={generator.image}
+                    defaultValue={null}
                     ></input>
                 </InputContainer>
             </div>
