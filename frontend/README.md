@@ -1,5 +1,6 @@
 # Frontend: React
 - contains source code for the frontend aspect, which is the working prototype for now.
+- Popup context and hook is currently unused, as the custom popup component works fine (for the most part)
 
 # React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

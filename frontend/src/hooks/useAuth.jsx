@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { login, authenticate, refresh, register } from '../../frontend/src/api/auth.api.js';
+import { login, authenticate, refresh, register } from '../api/auth.api.js';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
