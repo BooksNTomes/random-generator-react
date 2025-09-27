@@ -34,8 +34,6 @@ export const AuthProvider = ({ children }) => {
         onSuccess: (data) => {
             setToken(data.accessToken)
             localStorage.setItem('token', data.accessToken)
-
-            // Enable verification query
             setIsRefreshing(false);
         },
         onError: (error) => {

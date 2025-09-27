@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import '../css/index.css';
+import '../../css/index.css';
 import { NavCrumbs } from '../../components/Layout.jsx';
 import { useState, useEffect } from 'react';
 import { GeneratorManagerCard, GeneratorLoadingCard, GeneratorCreateCard } from '../../components/Cards.jsx';

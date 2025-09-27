@@ -6,6 +6,7 @@ import About from './pages/About';
 import Generators from './pages/Generators';
 import Generator from './pages/Generator';
 import ScrollTop from './components/ScrollTop.jsx';
+import GeneratorsManager from './pages/AdminPages/GeneratorsManager.jsx';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/generators" element={<Generators/>}/>
           <Route path="/generators/:id" element={<Generator/>}/>
+          <Route path="/generators-manager" element={<GeneratorsManager></GeneratorsManager>}/>
         </Routes>
         <Footer></Footer>
       </div>
