@@ -2,7 +2,7 @@ import logo from '../assets/frame.svg';
 import first from '../assets/first.svg';
 import second from '../assets/second.svg';
 import third from '../assets/third.svg';
-import {ImageCard} from '../components/Cards.jsx';
+import { ImageCard } from '../components/Cards.jsx';
 
 function Home() {
     return (

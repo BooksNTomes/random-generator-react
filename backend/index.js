@@ -5,7 +5,7 @@ import cors from 'cors';
 import { connectDB } from './config/db.js';
 import generatorRoutes from './routes/generator.routes.js';
 import userRoutes from './routes/user.routes.js';
-import { runTests } from './debug/generator.debug.js';
+import { runTests } from './testing/generator.testing.js';
 
 // Parameters
 dotenv.config();

@@ -3,7 +3,6 @@ export const algorithms = [
         value: "default",
         name: "Default - Math.random()",
     },
-    
 ]
 
 export const types = [

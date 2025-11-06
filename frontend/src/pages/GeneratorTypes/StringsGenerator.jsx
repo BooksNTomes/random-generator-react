@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { Config, Output } from "../../components/GeneratorComponents";
-import { ListForm } from "../../components/Forms";
-import Popup from "../../components/Popups";
-import { useAppendMethods, useDefaults } from "../../hooks/GeneratorHooks";
+import { Config, Output } from "../../components/GeneratorComponents.jsx";
+import { ListForm } from "../../components/Forms.jsx";
+import Popup from "../../components/Popups.jsx";
+import { useAppendMethods, useDefaults } from "../../hooks/useGeneratorHooks.js";
 
 export default function StringsGenerator({generator}) {
     const {amountState, amountHandler, algorithmState, algorithmHandler} = useDefaults();
@@ -47,7 +47,7 @@ export default function StringsGenerator({generator}) {
     }
     
     return (
-        <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md">
+        <>
             <Popup closeHandler={() => setActivePopup(false) }
             active={activePopup}
             >
@@ -57,22 +57,23 @@ export default function StringsGenerator({generator}) {
                 itemToggle={listHandler}>
                 </ListForm>
             </Popup>
-
-            <Config algorithmHandler={algorithmHandler} amountHandler={amountHandler}>
-                <h4 className="mb-5 flex">
-                    <div className="flex-grow">
-                        List: 
-                    </div>
-                    <div>
-                        <button className="p-1 rounded border-1 border-black/10 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]
-                        w-[245px]" 
-                        onClick={() => {
-                            setActivePopup(true)
-                            }}>Open List</button>
-                    </div>
-                </h4>
-            </Config>
-            <Output genState={genState} genHandler={genHandler}></Output>
-        </div>
+            <div className="flex gap-5 browser-size m-auto p-5 border-1 border-black/15 rounded-[5px] shadow-md">
+                <Config algorithmHandler={algorithmHandler} amountHandler={amountHandler}>
+                    <h4 className="mb-5 flex">
+                        <div className="flex-grow">
+                            List: 
+                        </div>
+                        <div>
+                            <button className="p-1 rounded border-1 border-black/10 bg-[hsl(0,0%,95%)]  hover:bg-[hsl(0,0%,90%)]
+                            w-[245px]" 
+                            onClick={() => {
+                                setActivePopup(true)
+                                }}>Open List</button>
+                        </div>
+                    </h4>
+                </Config>
+                <Output genState={genState} genHandler={genHandler}></Output>
+            </div>
+        </>
     )
 }

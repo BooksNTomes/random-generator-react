@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
-import {algorithms} from '../constants/generator.constants.js'
+import { algorithms } from '../constants/generator.constants.js'
 
 export function Output({genState, genHandler}){
     return (
         <>
             <div className="w-1/2">
                 <h2>Output</h2>
-                <div className="p-5 h-[350px] border-1 border-black/5 rounded-[5px] shadow-sm">
-                    <h3>{genState}</h3>
+                <div className="p-5 h-[350px] border-1 border-black/5 rounded-[5px] shadow-sm overflow-scroll pb-10">
+                    <h3 className='overflow-scroll'>{genState}</h3>
                 </div>
                 <button className="relative bottom-10 left-8 w-7/8 p-3 border-1 border-black/25 rounded-[5px] shadow-sm hover:bg-[hsl(0,0%,90%)] active:bg-[hsl(0,0%,80%)] bg-white"
                         onClick={() => genHandler()}>
@@ -19,11 +19,6 @@ export function Output({genState, genHandler}){
 }
 
 export function Config({children, algorithmHandler, amountHandler, generator}){
-
-    // useEffect(() => {
-    //     console.log(children)
-    // },[])
-
     return(
         <>
             <div className="w-1/2">
@@ -75,10 +70,6 @@ export function AlgorithmConfig({algorithmHandler, algorithmList=algorithms}){
 }
 
 export function ListConfig({listChildren, message="this generator does not allow direct modification"}){
-    // useEffect(() => {
-    //     console.log(listChildren)
-    // },[])
-
     return(
         <>
             <h4 className="mb-5 embolden flex">

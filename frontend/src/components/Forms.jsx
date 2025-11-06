@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import { useState } from 'react';
 import { types, validations } from '../constants/generator.constants';
 import { InputContainer, ListContainer, SelectContainer } from './FormComponents';
 import { BlankPopup, PreviewGeneratorPopup } from './Popups';
@@ -143,7 +143,7 @@ export function UpdateForm({generator, closeHandler, updateHandler}) {
                 <InputContainer label="Image">
                     <input name="image" type="file" className=""
                     onChange={(event) => handleChange(event)}
-                    defaultValue={generator.image}
+                    defaultValue={null}
                     ></input>
                 </InputContainer>
             </div>
@@ -190,14 +190,16 @@ export function ListForm({initialList, itemsList, itemToggle}){
 
     return (
         <>
-            {initialList.map((entry, index) => (
-            <span key={index}>
-                <input type="checkbox" 
-                onChange={ (event) => itemToggle(event, index) } 
-                name={entry} 
-                defaultChecked={itemsList[index] !== '' ? true : false}/>
-                <label htmlFor={entry}>{entry}</label>
-            </span>))}
+            <div className='min-w-[400px] max-h-[200px] overflow-scroll flex flex-col'>
+                {initialList.map((entry, index) => (
+                <span key={index} className='flex gap-2'>
+                    <input type="checkbox" 
+                    onChange={ (event) => itemToggle(event, index) } 
+                    name={entry} 
+                    defaultChecked={itemsList[index] !== '' ? true : false}/>
+                    <label htmlFor={entry}>{entry}</label>
+                </span>))}
+            </div>
         </>
     )
 }

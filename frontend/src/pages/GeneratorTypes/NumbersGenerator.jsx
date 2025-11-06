@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Output, Config } from "../../components/GeneratorComponents";
-import { useAppendMethods, useDefaults, useNumbers } from "../../hooks/GeneratorHooks";
+import { useEffect, useState } from "react";
+import { Output, Config } from "../../components/GeneratorComponents.jsx";
+import { useAppendMethods, useDefaults, useNumbers } from "../../hooks/useGeneratorHooks.js";
 
 export default function NumbersGenerator({generator}) {
 
@@ -15,12 +15,13 @@ export default function NumbersGenerator({generator}) {
         let newGenState = ``
         for (let i = 0; i < amountState; i++){
             if (algorithmState === "default"){
-                const stateCandidate = `${(Math.random() * (maxState - minState + 1) + minState)} `;
                 if (generator.validation !== "FLOAT"){
-                    newGenState += `${Math.floor(stateCandidate)} ` + useAppendComma(i, amountState);
+                    const stateCandidate = (Math.random() * (maxState - minState + 1) + minState);
+                    newGenState += `${Math.floor(stateCandidate)}` + appendMethod(i, amountState);
                 }
                 else {
-                    newGenState += `${stateCandidate} ` + appendMethod(i, amountState);
+                    const stateCandidate = (Math.random() * (maxState - minState) + minState);
+                    newGenState += `${stateCandidate}` + appendMethod(i, amountState);
                 }
             }
         }

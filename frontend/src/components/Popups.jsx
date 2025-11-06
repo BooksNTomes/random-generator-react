@@ -5,14 +5,13 @@ import StringsGenerator from "../pages/GeneratorTypes/StringsGenerator.jsx";
 import { CreateForm, DeleteForm, UpdateForm } from "./Forms"
 import { NavCrumbs } from './Layout'
 
-// TODO Layouting
 export default function Popup({children, closeHandler, active}) {
     return (
         <>
             {active ? (
                 <div>
                     <div className="overlay"
-                    onClick={() => console.log("Overlay")}
+                    onClick={() => closeHandler()}
                     ></div>
 
                     <div className="z-20 absolute border-black border-1 
@@ -39,7 +38,7 @@ export function BlankPopup({children, active}) {
             {active ? (
                 <div>
                     <div className="overlay"
-                    onClick={() => console.log("Overlay")}
+                    onClick={() => closeHandler()}
                     ></div>
 
                     <div className="z-20 absolute border-black border-1 
@@ -87,7 +86,6 @@ export function DeleteGeneratorPopup({active, deleteHandler, closeHandler}){
 }
 
 export function PreviewGeneratorPopup({active, closeHandler, generator}){
-
     return(
     <>
         <Popup
@@ -110,9 +108,6 @@ export function PreviewGeneratorPopup({active, closeHandler, generator}){
 }
 
 export function UpdateGeneratorPopup({active, generator, closeHandler, updateHandler}){
-    
-    const previewHandler = () => {}
-
     return(
         <>
             <BlankPopup
