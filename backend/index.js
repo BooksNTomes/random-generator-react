@@ -9,21 +9,27 @@ import { runTests } from './testing/generator.testing.js';
 
 // Parameters
 dotenv.config();
-const URL = `${process.env.BACKEND_URL? process.env.BACKEND_URL : process.env.LOCAL_BACKEND_URL}${process.env.PORT}`;
 
 // App
 const app = express();
+const URL = `${process.env.BACKEND_URL? process.env.BACKEND_URL : process.env.LOCAL_BACKEND_URL}${process.env.PORT}`;
+
+// Middleware
 app.use(cors({
     origin: process.env.ORIGIN_CLIENT,
     credentials: true
 }));
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
+// Middleware (Routes)
 app.use("/", generatorRoutes);
 app.use("/admin/", userRoutes);
-app.listen(process.env.PORT, () => {
-    connectDB();
-    console.log(`Server started at: ${URL}`);
+
+// Connect
+connectDB().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log(`Server started at: ${URL}`);
+    });
 });
 
 // Debug
